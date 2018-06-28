@@ -1,0 +1,9 @@
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\bin\Debug\Accord.dll.config
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\bin\Debug\Accord.Extensions.Vision.dll.config
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\bin\Debug\Accord.Extensions.Vision.xml
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\bin\Debug\Accord.Extensions.Vision.dll
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\bin\Debug\Accord.Extensions.Vision.pdb
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\Source\ImageProcessing\Vision\obj\Debug\Vision.csprojResolveAssemblyReference.cache
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\Source\ImageProcessing\Vision\obj\Debug\Vision.csproj.CoreCompileInputs.cache
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\Source\ImageProcessing\Vision\obj\Debug\Accord.Extensions.Vision.dll
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\Source\ImageProcessing\Vision\obj\Debug\Accord.Extensions.Vision.pdb

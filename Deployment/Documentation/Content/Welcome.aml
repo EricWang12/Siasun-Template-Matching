@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<topic id="82a47298-d8a0-427d-ba58-e4bf1ac468ff" revisionNumber="1">
+	<developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+		<introduction>
+			<para>
+        Accord.NET Extensions is an extension framework for Accord.NET and AForge.NET.
+        The framework is built with extensibility and portability in mind.    
+        Most provided algorithms for image processing, computer vision and statistical analysis are made as extensions.
+      </para>
+
+      <para>
+        The framework is divided in libraries available through NuGet packages. The libraries can be grouped as following:
+      </para>
+		</introduction>
+
+    <section>
+      <title>Image processing</title>
+      <content>
+
+        <list class="bullet">
+
+          <listItem>
+            <para>Accord.Extensions.Imaging.Algorithms</para>
+            <para>
+              Implements image-processing and computer-vision algorithms.
+              Provides extensions for image-processing algorithms implemented in Accord.NET framework and for some image-processing algorithms implemented in AForge.NET framework.
+            </para>
+          </listItem>
+
+          <listItem>
+            <para>Accord.Extensions.Imaging.Algorithms.LINE2D</para>
+            <para>
+              Implements template matching algorithm (~20x faster than conventional sliding window approach).
+            </para>
+          </listItem>
+
+          <listItem>
+            <para>Accord.Extensions.Vision</para>
+            <para>
+              Provides computer vision algorithms: Pyramidal KLT tracker, Camshift, Meanshift.
+            </para>
+          </listItem>
+        </list>
+      </content>
+    </section>
+    
+    <section>
+        <title>Math libraries</title>
+        <content>
+
+          <list class="bullet">
+            <listItem>
+              <para>Accord.Extensions.Math</para>
+              <para>
+                Provides extensions for the 2D array, graphs, contour, point transformations.
+                Implements parallel FFT transform. Implements group matching.
+              </para>
+            </listItem>
+
+            <listItem>
+              <para>Accord.Extensions.Statistics</para>
+              <para>
+                Provides classes and extensions for the following filters: Kalman, Particle filter, JPDAF - Joint Probability Data Association Filter.
+                Includes 2D motion models.
+              </para>
+            </listItem>
+          </list>
+        </content>
+      </section>
+    
+    <relatedTopics>
+		</relatedTopics>
+	</developerConceptualDocument>
+</topic>

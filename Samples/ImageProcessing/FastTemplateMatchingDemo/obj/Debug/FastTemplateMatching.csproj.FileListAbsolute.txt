@@ -1,0 +1,5 @@
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\obj\Debug\FastTemplateMatching.csprojResolveAssemblyReference.cache
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\obj\Debug\FastTemplateMatching.FastTP.resources
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\obj\Debug\FastTemplateMatching.Properties.Resources.resources
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\obj\Debug\FastTemplateMatching.csproj.GenerateResource.Cache
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\obj\Debug\FastTemplateMatching.csproj.CoreCompileInputs.cache

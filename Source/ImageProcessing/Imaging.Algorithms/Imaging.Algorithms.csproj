@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{91C6AE50-EE09-4E3D-8EBB-1BD42688D042}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Accord.Extensions.Imaging</RootNamespace>
+    <AssemblyName>Accord.Extensions.Imaging.Algorithms</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>..\..\..\bin\Debug\Accord.Extensions.Imaging.Algorithms.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>..\..\..\bin\Release\Accord.Extensions.Imaging.Algorithms.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accord, Version=3.0.2.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Accord.3.0.2\lib\net45\Accord.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Accord.Imaging, Version=3.0.2.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Accord.Imaging.3.0.2\lib\net45\Accord.Imaging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Accord.MachineLearning, Version=3.0.2.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Accord.MachineLearning.3.0.2\lib\net45\Accord.MachineLearning.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Accord.Math, Version=3.0.2.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Accord.Math.3.0.2\lib\net45\Accord.Math.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Accord.Statistics, Version=3.0.2.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Accord.Statistics.3.0.2\lib\net45\Accord.Statistics.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DotImaging.BitmapInterop, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\DotImaging.BitmapInterop.2.5.3\lib\net45\DotImaging.BitmapInterop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DotImaging.GenericImage, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\DotImaging.GenericImage.2.5.3\lib\net45\DotImaging.GenericImage.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DotImaging.Primitives2D, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\DotImaging.Primitives2D.2.5.3\lib\net45\DotImaging.Primitives2D.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AnnotationDatabase\Annotation.cs" />
+    <Compile Include="AnnotationDatabase\AnnotationDatabaseExtensions.cs" />
+    <Compile Include="AnnotationDatabase\AnnotationXmlDatabaseExtensions.cs" />
+    <Compile Include="BagOfVisualWordsExtensions.cs" />
+    <Compile Include="ComplexImage\ComplexImageExtensions.cs" />
+    <Compile Include="Convolution\FFTConvolution.cs" />
+    <Compile Include="CorrelationMatchingExtensions.cs" />
+    <Compile Include="Filters\2 Source Filters\Phase.cs" />
+    <Compile Include="Filters\Binarization\InRange.cs" />
+    <Compile Include="Filters\Blend.cs" />
+    <Compile Include="GrayLevelDifferenceMethod.cs" />
+    <Compile Include="GrayLevelRunLengthMatrixExtensions.cs" />
+    <Compile Include="Interest Points\ICornerDetectors\FastCornersDetector.cs" />
+    <Compile Include="Interest Points\GoodFeaturesToTrack.cs" />
+    <Compile Include="Interest Points\ICornerDetectors\HarrisCornersDetector.cs" />
+    <Compile Include="DenseHistogram\DenseHistogram.Arithmetics.cs" />
+    <Compile Include="DenseHistogram\DenseHistogram.Backpropagate.cs" />
+    <Compile Include="DenseHistogram\DenseHistogram.Calculate.cs" />
+    <Compile Include="DenseHistogram\DenseHistogram.Core.cs" />
+    <Compile Include="Filters\EdgeDetection\Robinson.cs" />
+    <Compile Include="Filters\ImageEnhacement\ContrastStretch.cs" />
+    <Compile Include="Filters\ImageEnhacement\CorrectContrast.cs" />
+    <Compile Include="Filters\ImageEnhacement\GrayWorld.cs" />
+    <Compile Include="Filters\CompassConvolution.cs" />
+    <Compile Include="Filters\EdgeDetection\Canny.cs" />
+    <Compile Include="Filters\EdgeDetection\Kirsh.cs" />
+    <Compile Include="Filters\EdgeDetection\Laplace.cs" />
+    <Compile Include="Filters\ImageEnhacement\Exponential.cs" />
+    <Compile Include="Filters\FindNonZero.cs" />
+    <Compile Include="Filters\GaborFilter.cs" />
+    <Compile Include="Filters\2 Source Filters\MathOperations\MathOperations.Arithmetics.cs" />
+    <Compile Include="Filters\2 Source Filters\MathOperations\MathOperations.Logic.cs" />
+    <Compile Include="Filters\2 Source Filters\MathOperations\MathOperations.LogicNot.cs" />
+    <Compile Include="Filters\2 Source Filters\Magnitude.cs" />
+    <Compile Include="Filters\ImageEnhacement\Kuwahara.cs" />
+    <Compile Include="Filters\ImageEnhacement\Logarithm.cs" />
+    <Compile Include="Filters\NonMaximaSupression.cs" />
+    <Compile Include="Filters\Binarization\BinaryThreshold.cs" />
+    <Compile Include="Contour\BorderFollowing.cs" />
+    <Compile Include="Filters\Rectification.cs" />
+    <Compile Include="Filters\Variance.cs" />
+    <Compile Include="Filters\WaveletTransform.cs" />
+    <Compile Include="Filters\ImageEnhacement\WhitePatch.cs" />
+    <Compile Include="IntegralImage\IntegralImageExtensions.cs" />
+    <Compile Include="Interest Points\ICornerDetectors\ICornerDetectorExtensions.cs" />
+    <Compile Include="Interest Points\IFeatureDetectorExtensions.cs" />
+    <Compile Include="Moments\CentralMoments.cs" />
+    <Compile Include="Moments\HuMoments.cs" />
+    <Compile Include="Moments\IMoments.cs" />
+    <Compile Include="Moments\RawMoments.cs" />
+    <Compile Include="MoreLinq\MoreEnumerable.ForEach.cs" />
+    <Compile Include="Transform\GetRectSubPix.cs" />
+    <Compile Include="Transform\PyramidExtensions.cs" />
+    <Compile Include="Filters\Smooth\SmoothGaussian.cs" />
+    <Compile Include="Filters\EdgeDetection\Sobel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Structures\TermCriteria.cs" />
+    <Compile Include="Transform\Resize.cs" />
+    <Compile Include="Transform\ResizeNearsetNeighbur.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Math\Math\Math.csproj">
+      <Project>{23880a3c-b97d-4139-8355-6dc599dd1576}</Project>
+      <Name>Math</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Support\Core\Core.csproj">
+      <Project>{f46115e9-c4fc-4355-93ae-be8e96b236c9}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Support\Imaging.AForgeInterop\Imaging.AForgeInterop.csproj">
+      <Project>{f4e40964-c640-4c87-9e3e-a1f1266fbc73}</Project>
+      <Name>Imaging.AForgeInterop</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Import Project="..\..\..\packages\Accord.3.0.2\build\Accord.targets" Condition="Exists('..\..\..\packages\Accord.3.0.2\build\Accord.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\..\packages\Accord.3.0.2\build\Accord.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Accord.3.0.2\build\Accord.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

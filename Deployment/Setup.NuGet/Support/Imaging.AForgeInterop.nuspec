@@ -1,0 +1,35 @@
+﻿<?xml version="1.0"?>
+
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Accord.Extensions.Imaging.AForgeInterop</id>
+    <version>$version$</version>
+    <title>Accord.Extensions.Imaging.AForgeInterop</title>
+    <authors>Accord.NET Extensions</authors>
+    <owners>Accord.NET Extensions</owners>
+    <licenseUrl>https://raw.githubusercontent.com/dajuric/accord-net-extensions/master/Deployment/Licence.txt</licenseUrl>
+    <projectUrl>https://github.com/dajuric/accord-net-extensions</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/dajuric/accord-net-extensions/master/Deployment/Logo/logo-small.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>
+      Provides extensions for easy interoperability between DotImaging and UnmanagedImage format.
+    </description>
+    <summary>Interoperability extensions between DotImaging and UnmanagedImage format.</summary>
+    <tags>accord.net extensions interoperability unmanaged-image, dot-imaging</tags>
+
+    <dependencies>
+      <dependency id="Accord.Imaging"              version="3.0.2" />
+      
+      <dependency id="DotImaging.GenericImage"     version="2.5.3" />
+    </dependencies>
+
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Drawing"  />
+    </frameworkAssemblies>
+  </metadata>
+  
+  <files>
+    <file src="..\..\..\bin\Release\Accord.Extensions.Imaging.AForgeInterop.dll" target="lib\net45\Accord.Extensions.Imaging.AForgeInterop.dll" />
+    <file src="..\..\..\bin\Release\Accord.Extensions.Imaging.AForgeInterop.xml" target="lib\net45\Accord.Extensions.Imaging.AForgeInterop.xml" />
+  </files>
+</package>

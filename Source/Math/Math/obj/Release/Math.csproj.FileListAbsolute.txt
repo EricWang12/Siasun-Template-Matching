@@ -1,0 +1,9 @@
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\bin\Release\Accord.dll.config
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\bin\Release\Accord.Extensions.Math.dll.config
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\bin\Release\Accord.Extensions.Math.XML
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\bin\Release\Accord.Extensions.Math.dll
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\bin\Release\Accord.Extensions.Math.pdb
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\Source\Math\Math\obj\Release\Math.csprojResolveAssemblyReference.cache
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\Source\Math\Math\obj\Release\Math.csproj.CoreCompileInputs.cache
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\Source\Math\Math\obj\Release\Accord.Extensions.Math.dll
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\Source\Math\Math\obj\Release\Accord.Extensions.Math.pdb

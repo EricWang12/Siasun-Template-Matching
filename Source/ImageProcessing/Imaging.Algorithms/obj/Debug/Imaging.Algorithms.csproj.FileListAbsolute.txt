@@ -1,0 +1,9 @@
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\bin\Debug\Accord.dll.config
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\bin\Debug\Accord.Extensions.Imaging.Algorithms.dll.config
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\bin\Debug\Accord.Extensions.Imaging.Algorithms.XML
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\bin\Debug\Accord.Extensions.Imaging.Algorithms.dll
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\bin\Debug\Accord.Extensions.Imaging.Algorithms.pdb
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\Source\ImageProcessing\Imaging.Algorithms\obj\Debug\Imaging.Algorithms.csprojResolveAssemblyReference.cache
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\Source\ImageProcessing\Imaging.Algorithms\obj\Debug\Imaging.Algorithms.csproj.CoreCompileInputs.cache
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\Source\ImageProcessing\Imaging.Algorithms\obj\Debug\Accord.Extensions.Imaging.Algorithms.dll
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\Source\ImageProcessing\Imaging.Algorithms\obj\Debug\Accord.Extensions.Imaging.Algorithms.pdb

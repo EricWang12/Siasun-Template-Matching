@@ -1,0 +1,33 @@
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\bin\Release\Accord.dll.config
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\bin\Release\UnmanagedLibraries\Windows\x64\SIMDArrayInstructions.dll
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\bin\Release\UnmanagedLibraries\Windows\x86\SIMDArrayInstructions.dll
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\bin\Release\Accord.Extensions.Imaging.Algorithms.LINE2D.dll.config
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\bin\Release\Accord.Extensions.Imaging.Algorithms.LINE2D.xml
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\bin\Release\Accord.Extensions.Imaging.Algorithms.LINE2D.dll
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\bin\Release\Accord.Extensions.Imaging.Algorithms.LINE2D.pdb
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\Source\ImageProcessing\FastTemplateMatching\obj\Release\Imaging.Algorithms.LINE2D.csprojResolveAssemblyReference.cache
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\Source\ImageProcessing\FastTemplateMatching\obj\Release\Imaging.Algorithms.LINE2D.csproj.CoreCompileInputs.cache
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\Source\ImageProcessing\FastTemplateMatching\obj\Release\Accord.Extensions.Imaging.Algorithms.LINE2D.dll
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\Source\ImageProcessing\FastTemplateMatching\obj\Release\Accord.Extensions.Imaging.Algorithms.LINE2D.pdb
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master - Copy (2)\bin\Release\Accord.dll.config
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master - Copy (2)\bin\Release\UnmanagedLibraries\Windows\x64\SIMDArrayInstructions.dll
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master - Copy (2)\bin\Release\UnmanagedLibraries\Windows\x86\SIMDArrayInstructions.dll
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master - Copy (2)\bin\Release\Accord.Extensions.Imaging.Algorithms.LINE2D.dll.config
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master - Copy (2)\bin\Release\Accord.Extensions.Imaging.Algorithms.LINE2D.xml
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master - Copy (2)\bin\Release\Accord.Extensions.Imaging.Algorithms.LINE2D.dll
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master - Copy (2)\bin\Release\Accord.Extensions.Imaging.Algorithms.LINE2D.pdb
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master - Copy (2)\Source\ImageProcessing\FastTemplateMatching\obj\Release\Imaging.Algorithms.LINE2D.csprojResolveAssemblyReference.cache
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master - Copy (2)\Source\ImageProcessing\FastTemplateMatching\obj\Release\Imaging.Algorithms.LINE2D.csproj.CoreCompileInputs.cache
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master - Copy (2)\Source\ImageProcessing\FastTemplateMatching\obj\Release\Accord.Extensions.Imaging.Algorithms.LINE2D.dll
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master - Copy (2)\Source\ImageProcessing\FastTemplateMatching\obj\Release\Accord.Extensions.Imaging.Algorithms.LINE2D.pdb
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\bin\Release\Accord.dll.config
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\bin\Release\UnmanagedLibraries\Windows\x64\SIMDArrayInstructions.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\bin\Release\UnmanagedLibraries\Windows\x86\SIMDArrayInstructions.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\bin\Release\Accord.Extensions.Imaging.Algorithms.LINE2D.dll.config
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\bin\Release\Accord.Extensions.Imaging.Algorithms.LINE2D.xml
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\bin\Release\Accord.Extensions.Imaging.Algorithms.LINE2D.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\bin\Release\Accord.Extensions.Imaging.Algorithms.LINE2D.pdb
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Source\ImageProcessing\FastTemplateMatching\obj\Release\Imaging.Algorithms.LINE2D.csprojResolveAssemblyReference.cache
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Source\ImageProcessing\FastTemplateMatching\obj\Release\Imaging.Algorithms.LINE2D.csproj.CoreCompileInputs.cache
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Source\ImageProcessing\FastTemplateMatching\obj\Release\Accord.Extensions.Imaging.Algorithms.LINE2D.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Source\ImageProcessing\FastTemplateMatching\obj\Release\Accord.Extensions.Imaging.Algorithms.LINE2D.pdb

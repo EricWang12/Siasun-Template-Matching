@@ -1,0 +1,8 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(373,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  SIMDArrayInstructions.cpp
+c:\users\wzner\workspace\siasun\accord-net-extensions-master\source\imageprocessing\fasttemplatematching\simdarrayinstructions\simdarrayinstructions.cpp(85): warning C4311: 'type cast': pointer truncation from 'unsigned char *' to 'int'
+c:\users\wzner\workspace\siasun\accord-net-extensions-master\source\imageprocessing\fasttemplatematching\simdarrayinstructions\simdarrayinstructions.cpp(85): warning C4302: 'type cast': truncation from 'unsigned char *' to 'int'
+c:\users\wzner\workspace\siasun\accord-net-extensions-master\source\imageprocessing\fasttemplatematching\simdarrayinstructions\simdarrayinstructions.cpp(156): warning C4311: 'type cast': pointer truncation from 'short *' to 'int'
+c:\users\wzner\workspace\siasun\accord-net-extensions-master\source\imageprocessing\fasttemplatematching\simdarrayinstructions\simdarrayinstructions.cpp(156): warning C4302: 'type cast': truncation from 'short *' to 'int'
+     Creating library ..\UnmanagedLibraries\Windows\x64\SIMDArrayInstructions.lib and object ..\UnmanagedLibraries\Windows\x64\SIMDArrayInstructions.exp
+  SIMDArrayInstructions.vcxproj -> C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\Source\ImageProcessing\FastTemplateMatching\SIMDArrayInstructions\..\UnmanagedLibraries\Windows\x64\SIMDArrayInstructions.dll

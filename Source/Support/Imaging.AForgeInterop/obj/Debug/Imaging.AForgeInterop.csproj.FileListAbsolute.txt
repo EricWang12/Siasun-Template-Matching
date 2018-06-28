@@ -1,0 +1,8 @@
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\bin\Debug\Accord.dll.config
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\bin\Debug\Accord.Extensions.Imaging.AForgeInterop.xml
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\bin\Debug\Accord.Extensions.Imaging.AForgeInterop.dll
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\bin\Debug\Accord.Extensions.Imaging.AForgeInterop.pdb
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\Source\Support\Imaging.AForgeInterop\obj\Debug\Imaging.AForgeInterop.csprojResolveAssemblyReference.cache
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\Source\Support\Imaging.AForgeInterop\obj\Debug\Imaging.AForgeInterop.csproj.CoreCompileInputs.cache
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\Source\Support\Imaging.AForgeInterop\obj\Debug\Accord.Extensions.Imaging.AForgeInterop.dll
+C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\Source\Support\Imaging.AForgeInterop\obj\Debug\Accord.Extensions.Imaging.AForgeInterop.pdb

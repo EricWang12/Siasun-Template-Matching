@@ -1,0 +1,88 @@
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\UnmanagedLibraries\Windows\x64\SIMDArrayInstructions.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\UnmanagedLibraries\Windows\x86\SIMDArrayInstructions.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.dll.config
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Extensions.Core.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Extensions.Imaging.AForgeInterop.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Extensions.Imaging.Algorithms.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Extensions.Imaging.Algorithms.LINE2D.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Extensions.Math.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Imaging.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.MachineLearning.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Math.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Statistics.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\DotImaging.BitmapInterop.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\DotImaging.Drawing.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\DotImaging.GenericImage.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\DotImaging.IO.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\DotImaging.Primitives2D.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Extensions.Imaging.Algorithms.LINE2D.pdb
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Extensions.Imaging.Algorithms.LINE2D.xml
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Extensions.Imaging.Algorithms.LINE2D.dll.config
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.xml
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Extensions.Core.xml
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Extensions.Imaging.AForgeInterop.xml
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Extensions.Imaging.Algorithms.xml
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Extensions.Math.xml
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Imaging.xml
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.MachineLearning.xml
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Math.xml
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Statistics.xml
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\DotImaging.BitmapInterop.xml
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\DotImaging.Drawing.xml
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\DotImaging.GenericImage.xml
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\DotImaging.IO.xml
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\obj\Release\FastTemplateMatching.csprojResolveAssemblyReference.cache
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\obj\Release\FastTemplateMatching.csproj.GenerateResource.Cache
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\obj\Release\FastTemplateMatching.csproj.CoreCompileInputs.cache
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\FastTemplateMatching.exe.config
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\FastTemplateMatching.exe
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\FastTemplateMatching.pdb
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\obj\Release\FastTemplateMatching.Properties.Resources.resources
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\obj\Release\FastTemplateMatching.exe
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\obj\Release\FastTemplateMatching.pdb
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~\Samples\ImageProcessing\FastTemplateMatchingDemo\obj\Release\FastTemplateMatching.FastTP.resources
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\UnmanagedLibraries\Windows\x64\SIMDArrayInstructions.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\UnmanagedLibraries\Windows\x86\SIMDArrayInstructions.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.dll.config
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\FastTemplateMatching.exe.config
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\FastTemplateMatching.exe
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\FastTemplateMatching.pdb
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Extensions.Core.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Extensions.Imaging.AForgeInterop.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Extensions.Imaging.Algorithms.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Extensions.Imaging.Algorithms.LINE2D.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Extensions.Math.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Imaging.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.MachineLearning.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Math.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Statistics.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\DotImaging.BitmapInterop.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\DotImaging.Drawing.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\DotImaging.GenericImage.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\DotImaging.IO.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\DotImaging.Primitives2D.dll
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Extensions.Imaging.Algorithms.LINE2D.pdb
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Extensions.Imaging.Algorithms.LINE2D.xml
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Extensions.Imaging.Algorithms.LINE2D.dll.config
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.xml
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Extensions.Core.xml
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Extensions.Imaging.AForgeInterop.xml
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Extensions.Imaging.Algorithms.xml
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Extensions.Math.xml
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Imaging.xml
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.MachineLearning.xml
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Math.xml
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\Accord.Statistics.xml
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\DotImaging.BitmapInterop.xml
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\DotImaging.Drawing.xml
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\DotImaging.GenericImage.xml
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\bin\DotImaging.IO.xml
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\obj\Release\FastTemplateMatching.csprojResolveAssemblyReference.cache
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\obj\Release\FastTemplateMatching.FastTP.resources
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\obj\Release\FastTemplateMatching.Properties.Resources.resources
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\obj\Release\FastTemplateMatching.csproj.GenerateResource.Cache
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\obj\Release\FastTemplateMatching.csproj.CoreCompileInputs.cache
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\obj\Release\FastTemplateMatching.exe
+C:\Users\wzner\Workspace\SiaSun\Okay this now works yea~ - Copy (2)\Samples\ImageProcessing\FastTemplateMatchingDemo\obj\Release\FastTemplateMatching.pdb
