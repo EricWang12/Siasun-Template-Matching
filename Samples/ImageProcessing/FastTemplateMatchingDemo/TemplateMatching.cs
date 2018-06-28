@@ -654,7 +654,7 @@ namespace FastTemplateMatching
             var matchGroups = new MatchClustering(minDetectionsPerGroup).Group(matches.ToArray());
             foreach (var group in matchGroups)
             {
-                if (labels == null ? labels.Contains(group.Representative.Template.ClassLabel) : true)
+                if (labels == null ? true : labels.Contains(group.Representative.Template.ClassLabel) )
                     bestRepresentatives.Add(group.Representative);
             }
 

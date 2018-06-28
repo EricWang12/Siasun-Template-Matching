@@ -57,7 +57,7 @@ namespace Accord.Extensions.Imaging.Algorithms.LINE2D
         /// <param name="features">Collection of features.</param>
         /// <param name="size">Template size.</param>
         /// <param name="classLabel">Template class label.</param>
-        /// <param name="Angle"></param>
+        /// <param name="angle"></param>
         void Initialize(Feature[] features, Size size, string classLabel,float angle);
     }
 }

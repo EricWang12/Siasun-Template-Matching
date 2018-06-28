@@ -6,3 +6,11 @@ C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\Source\Support\Core
 C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\Source\Support\Core\obj\Debug\Core.csproj.CoreCompileInputs.cache
 C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\Source\Support\Core\obj\Debug\Accord.Extensions.Core.dll
 C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\Source\Support\Core\obj\Debug\Accord.Extensions.Core.pdb
+C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\bin\Debug\Accord.dll.config
+C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\bin\Debug\Accord.Extensions.Core.XML
+C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\bin\Debug\Accord.Extensions.Core.dll
+C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\bin\Debug\Accord.Extensions.Core.pdb
+C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\Source\Support\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
+C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\Source\Support\Core\obj\Debug\Core.csproj.CoreCompileInputs.cache
+C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\Source\Support\Core\obj\Debug\Accord.Extensions.Core.dll
+C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\Source\Support\Core\obj\Debug\Accord.Extensions.Core.pdb

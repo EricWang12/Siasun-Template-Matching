@@ -299,7 +299,7 @@
             <param name="features">Collection of features.</param>
             <param name="size">Template size.</param>
             <param name="classLabel">Template class label.</param>
-            <param name="Angle"></param>
+            <param name="angle"></param>
         </member>
         <member name="T:Accord.Extensions.Imaging.Algorithms.LINE2D.ITemplatePyramid">
             <summary>

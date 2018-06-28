@@ -9,3 +9,14 @@ C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\Samples\Support\Cor
 C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\Samples\Support\Core\Collections\obj\Release\Collections.csproj.CoreCompileInputs.cache
 C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\Samples\Support\Core\Collections\obj\Release\Collections.exe
 C:\Users\wzner\Workspace\SiaSun\accord-net-extensions-master\Samples\Support\Core\Collections\obj\Release\Collections.pdb
+C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\Samples\Support\Core\Collections\bin\Release\Accord.dll.config
+C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\Samples\Support\Core\Collections\bin\Release\Collections.exe.config
+C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\Samples\Support\Core\Collections\bin\Release\Collections.exe
+C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\Samples\Support\Core\Collections\bin\Release\Collections.pdb
+C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\Samples\Support\Core\Collections\bin\Release\Accord.Extensions.Core.dll
+C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\Samples\Support\Core\Collections\bin\Release\Accord.Extensions.Core.pdb
+C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\Samples\Support\Core\Collections\bin\Release\Accord.Extensions.Core.xml
+C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\Samples\Support\Core\Collections\obj\Release\Collections.csprojResolveAssemblyReference.cache
+C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\Samples\Support\Core\Collections\obj\Release\Collections.csproj.CoreCompileInputs.cache
+C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\Samples\Support\Core\Collections\obj\Release\Collections.exe
+C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\Samples\Support\Core\Collections\obj\Release\Collections.pdb

@@ -189,6 +189,8 @@ namespace Accord.Extensions.Imaging.Algorithms.LINE2D
         private static List<Feature> FilterScatteredFeatures(List<Feature> candidates, int maxNumOfFeatures, int minDistance)
         {
             int distance = 50;
+            int nearest_of_most_isolated = 0, nearest = Int32.MaxValue;
+            Feature most_isolated = null;
             maxNumOfFeatures = System.Math.Min(maxNumOfFeatures, candidates.Count);
 
             List<Feature> filteredFeatures = new List<Feature>();
@@ -204,11 +206,19 @@ namespace Accord.Extensions.Imaging.Algorithms.LINE2D
                     int dy = candidates[i].Y - filteredFeatures[j].Y;
                     int featureDistanceSqr = dx * dx + dy * dy;
 
+                    nearest = System.Math.Min(nearest, featureDistanceSqr);
+
                     if (featureDistanceSqr < distanceSqr)
                     {
                         isEnoughFar = false;
                         break;
                     }
+                }
+
+                if (nearest > nearest_of_most_isolated)
+                {
+                    nearest_of_most_isolated = nearest;
+                    most_isolated = candidates[i];
                 }
 
                 if (isEnoughFar)
@@ -223,7 +233,8 @@ namespace Accord.Extensions.Imaging.Algorithms.LINE2D
                     distanceSqr = distance * distance;
                 }
             }
-
+            if(most_isolated != null)
+                filteredFeatures.Remove(most_isolated);
             return filteredFeatures;
         }
 

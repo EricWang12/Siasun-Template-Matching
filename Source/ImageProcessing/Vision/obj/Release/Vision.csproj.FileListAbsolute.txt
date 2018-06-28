@@ -1,0 +1,9 @@
+C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\bin\Release\Accord.dll.config
+C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\bin\Release\Accord.Extensions.Vision.dll.config
+C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\bin\Release\Accord.Extensions.Vision.xml
+C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\bin\Release\Accord.Extensions.Vision.dll
+C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\bin\Release\Accord.Extensions.Vision.pdb
+C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\Source\ImageProcessing\Vision\obj\Release\Vision.csprojResolveAssemblyReference.cache
+C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\Source\ImageProcessing\Vision\obj\Release\Vision.csproj.CoreCompileInputs.cache
+C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\Source\ImageProcessing\Vision\obj\Release\Accord.Extensions.Vision.dll
+C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\Source\ImageProcessing\Vision\obj\Release\Accord.Extensions.Vision.pdb

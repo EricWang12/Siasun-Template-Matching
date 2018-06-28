@@ -92,8 +92,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ImageProcessing", "ImagePro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastTemplateMatching", "Samples\ImageProcessing\FastTemplateMatchingDemo\FastTemplateMatching.csproj", "{83816CC9-DB98-4048-888D-E81CB08178D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupMatchingDemo", "Samples\Math\GroupMatchingDemo\GroupMatchingDemo.csproj", "{9E8AA7B3-4851-439D-81A4-E74798BCBE05}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "README-resources", "README-resources", "{1C33382A-B81E-4D78-B86C-CEFC4CBB5B9E}"
 	ProjectSection(SolutionItems) = preProject
 		Deployment\README-resources\algorithms-sample.png = Deployment\README-resources\algorithms-sample.png
@@ -106,8 +104,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "README-resources", "README-
 		Deployment\README-resources\ParticleFilterTemplateMatching.jpg = Deployment\README-resources\ParticleFilterTemplateMatching.jpg
 		Deployment\README-resources\play-video.png = Deployment\README-resources\play-video.png
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphSearchDemo", "Samples\Math\GraphSearchDemo\GraphSearchDemo.csproj", "{3BFF1917-CF76-477E-837D-43639A0F6F71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -268,30 +264,6 @@ Global
 		{83816CC9-DB98-4048-888D-E81CB08178D7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{83816CC9-DB98-4048-888D-E81CB08178D7}.Release|Win32.ActiveCfg = Release|Any CPU
 		{83816CC9-DB98-4048-888D-E81CB08178D7}.Release|x64.ActiveCfg = Release|Any CPU
-		{9E8AA7B3-4851-439D-81A4-E74798BCBE05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9E8AA7B3-4851-439D-81A4-E74798BCBE05}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9E8AA7B3-4851-439D-81A4-E74798BCBE05}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{9E8AA7B3-4851-439D-81A4-E74798BCBE05}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{9E8AA7B3-4851-439D-81A4-E74798BCBE05}.Debug|Win32.ActiveCfg = Debug|Any CPU
-		{9E8AA7B3-4851-439D-81A4-E74798BCBE05}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{9E8AA7B3-4851-439D-81A4-E74798BCBE05}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9E8AA7B3-4851-439D-81A4-E74798BCBE05}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9E8AA7B3-4851-439D-81A4-E74798BCBE05}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{9E8AA7B3-4851-439D-81A4-E74798BCBE05}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{9E8AA7B3-4851-439D-81A4-E74798BCBE05}.Release|Win32.ActiveCfg = Release|Any CPU
-		{9E8AA7B3-4851-439D-81A4-E74798BCBE05}.Release|x64.ActiveCfg = Release|Any CPU
-		{3BFF1917-CF76-477E-837D-43639A0F6F71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3BFF1917-CF76-477E-837D-43639A0F6F71}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3BFF1917-CF76-477E-837D-43639A0F6F71}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{3BFF1917-CF76-477E-837D-43639A0F6F71}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{3BFF1917-CF76-477E-837D-43639A0F6F71}.Debug|Win32.ActiveCfg = Debug|Any CPU
-		{3BFF1917-CF76-477E-837D-43639A0F6F71}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{3BFF1917-CF76-477E-837D-43639A0F6F71}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3BFF1917-CF76-477E-837D-43639A0F6F71}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3BFF1917-CF76-477E-837D-43639A0F6F71}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{3BFF1917-CF76-477E-837D-43639A0F6F71}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{3BFF1917-CF76-477E-837D-43639A0F6F71}.Release|Win32.ActiveCfg = Release|Any CPU
-		{3BFF1917-CF76-477E-837D-43639A0F6F71}.Release|x64.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -318,9 +290,7 @@ Global
 		{59256815-8441-4F84-A48D-5598EB5550DD} = {81158F67-A092-4665-A81B-D4E230D8EABE}
 		{1B761EAC-4B2D-4422-A60E-8B1AB1429A60} = {05BDC895-7F7B-4B6F-8D69-E7916837092D}
 		{83816CC9-DB98-4048-888D-E81CB08178D7} = {1B761EAC-4B2D-4422-A60E-8B1AB1429A60}
-		{9E8AA7B3-4851-439D-81A4-E74798BCBE05} = {8AD04F7C-4FEB-45FE-8611-AFAD2482192F}
 		{1C33382A-B81E-4D78-B86C-CEFC4CBB5B9E} = {80FC5EA1-3478-4E7F-8B05-190DF6750EA4}
-		{3BFF1917-CF76-477E-837D-43639A0F6F71} = {8AD04F7C-4FEB-45FE-8611-AFAD2482192F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9C5AE0FE-1C18-4699-9D93-DE28E489E9EA}
