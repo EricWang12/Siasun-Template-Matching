@@ -36,7 +36,7 @@ namespace Accord.Extensions.Imaging.Algorithms.LINE2D
         /// <summary>
         /// Default neighborhood spread per level.
         /// </summary>
-        public static int[] DEFAULT_NEGBORHOOD_PER_LEVEL = new int[] { 5/*, 8*/}; //bigger image towards smaller one
+        public static int[] DEFAULT_NEGBORHOOD_PER_LEVEL = new int[] { 5 };//, 8 }; //bigger image towards smaller one
 
         /// <summary>
         /// Gets linearized maps.

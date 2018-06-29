@@ -45,7 +45,7 @@ namespace Accord.Extensions.Imaging.Algorithms.LINE2D
         /// <summary>
         /// Gets template features.
         /// </summary>
-        public Feature[] Features { get; private set; }
+        public Feature[] Features { get; set;  }
         /// <summary>
         /// Gets template size (features bounding box).
         /// </summary>
@@ -188,7 +188,7 @@ namespace Accord.Extensions.Imaging.Algorithms.LINE2D
         //make sure that each feature is far enough from each other
         private static List<Feature> FilterScatteredFeatures(List<Feature> candidates, int maxNumOfFeatures, int minDistance)
         {
-            int distance = 50;
+            int distance = 30;
             int nearest_of_most_isolated = 0, nearest = Int32.MaxValue;
             Feature most_isolated = null;
             maxNumOfFeatures = System.Math.Min(maxNumOfFeatures, candidates.Count);

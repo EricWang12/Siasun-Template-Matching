@@ -53,12 +53,12 @@ namespace Accord.Extensions.Imaging.Algorithms.LINE2D
         /// <summary>
         /// Maximum number of features per pyramid level.
         /// </summary>
-        static int[] DEFAULT_MAX_FEATURES_PER_LEVEL = new int[] { 100/*, 100 / 2*/ }; //bigger image towards smaller one   
+        static int[] DEFAULT_MAX_FEATURES_PER_LEVEL = new int[] { 400 };//, 100 / 2 }; //bigger image towards smaller one   
 
         /// <summary>
         /// Gets the image templates. One for each pyramid level.
         /// </summary>
-        public T[] Templates { get; private set; }
+        public T[] Templates { get;  set; }
 
         /// <summary>
         /// Creates an empty image template pyramid. Requires initialization.
@@ -140,7 +140,7 @@ namespace Accord.Extensions.Imaging.Algorithms.LINE2D
 
                 if (templates[pyrLevel].Features.Length < minNumberOfFeatures) //if there is no enough features mark Pyramid as invalid
                 {
-                    Console.WriteLine("hahhhahahahha");
+                    Console.WriteLine("there is no enough features mark Pyramid as invalid");
                     isValid = false;
                     break;
                 }
