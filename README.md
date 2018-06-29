@@ -11,5 +11,12 @@ https://github.com/dajuric/accord-net-extensions
 For now it's a demo which is basically a state machine :
 INIT -> BUILD TEMPLATE -> CALIBRATE THE TEMPLATE IMAGE -> ROTATE TO GET TEMPLATE IN DIFFERENT ANGLES -> DONE
 
-IN THE INIT POSITION A FRAMEWORK IS DRAWN FOR PRECISION 
+For INIT State:
 ![init-illustration](https://user-images.githubusercontent.com/22462126/42083095-771595f2-7bbc-11e8-82bd-de8a05cd114a.PNG)
+
+USER: put the object within the red circle and make sure the gap between red and green circle is clear, then you can hit the button!
+
+BEHIND THE SENCE:
+    The image is actually crop into square sized as the blue square in the image, 
+    rotate then crop X 360 to get full degrees
+    
