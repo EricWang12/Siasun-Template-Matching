@@ -12,4 +12,4 @@ For now it's a demo which is basically a state machine :
 INIT -> BUILD TEMPLATE -> CALIBRATE THE TEMPLATE IMAGE -> ROTATE TO GET TEMPLATE IN DIFFERENT ANGLES -> DONE
 
 IN THE INIT POSITION A FRAMEWORK IS DRAWN FOR PRECISION 
-![alt text] (C:\Users\wzner\Pictures\INIT -illustration.PNG)
+![alt text] (C:\Users\wzner\Pictures\INIT-illustration.PNG?raw=true "Title")
