@@ -27,14 +27,14 @@ namespace FastTemplateMatching
 {
     public class TemplateMatching 
     {
-        public int threshold = 80;
+        public int threshold { get; set; }
 
         int minDetectionsPerGroup = 0; //for match grouping (postprocessing)
 
         public List<TemplatePyramid> templPyrs = null;
 
-        private int totalAngles = 360;
-        private int totalSizes = 1;
+        private int totalAngles { get; set; }
+        private int totalSizes { get; set; }
 
         private LinearizedMapPyramid linPyr = null;
         
@@ -45,11 +45,14 @@ namespace FastTemplateMatching
         #region initialize with local file
 
         /// <summary>
-        /// Switch between two loading methods. 
-        /// Creating a template from files or by deserializing.
+        /// Initialize with a threshold setting and Angle Number setting
         /// </summary
-        public void initialize(String fileName)
+        public void initialize(String fileName, int inputThreshold = 80 , float angleGap = 1 , int sizes = 1) 
         {
+
+            this.threshold = inputThreshold;
+            this.totalAngles = (int)(360 / angleGap);
+            this.totalSizes = sizes;
 #if AUTOINIT
             try
             {
@@ -64,37 +67,13 @@ namespace FastTemplateMatching
             Console.WriteLine("COMPLETE!");
 #else
 #if READFILE
-            templPyrs = fromFiles(fileName,true);
+            templPyrs = fromFiles(fileName, true);
 #else
             templPyrs = fromXML(fileName);
 #endif
 
 #endif
-
-        }
-        /// <summary>
-        /// Initialize with a threshold setting
-        /// </summary
-        public void initialize(String fileName, int inputThreshold)
-        {
-            initialize(fileName);
-            threshold = inputThreshold;
-        }
-        /// <summary>
-        /// Initialize with a threshold setting and Angle Number setting
-        /// </summary
-        public void initialize(String fileName, float angleGap)
-        {
-            initialize(fileName);
-            totalAngles = (int)(360 / angleGap);
-        }
-        /// <summary>
-        /// Initialize with a threshold setting and Angle Number setting
-        /// </summary
-        public void initialize(String fileName, int inputThreshold, float angleGap)
-        {
-            initialize(fileName, inputThreshold);
-            totalAngles = (int)(360 / angleGap);
+            
         }
         /// <summary>
         /// Manually update/build Template
@@ -449,35 +428,7 @@ namespace FastTemplateMatching
             totalSizes = Num;
         }
 
-        private void ResizeImage(float Ratio, string inputFile, string outFile)
-        {
-            Bitmap image = new Bitmap(inputFile, true);
-
-            int width = (int)(image.Width * Ratio);
-            int height = (int)(image.Height * Ratio);
-
-            var destRect = new System.Drawing.Rectangle(0, 0, width, height);
-            Bitmap destImage = new Bitmap(width, height);
-
-            destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
-
-            using (var graphics = Graphics.FromImage(destImage))
-            {
-                graphics.CompositingMode = CompositingMode.SourceCopy;
-                graphics.CompositingQuality = CompositingQuality.HighQuality;
-                graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                graphics.SmoothingMode = SmoothingMode.HighQuality;
-                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
-
-                using (var wrapMode = new ImageAttributes())
-                {
-                    wrapMode.SetWrapMode(WrapMode.TileFlipXY);
-                    graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
-                }
-            }
-
-            destImage.Save(outFile);
-        }
+        
         private void rotateImage(string inputFile, float angle, string outFile)
         {
             Bitmap bitmap = new Bitmap(inputFile, true);
@@ -527,29 +478,35 @@ namespace FastTemplateMatching
             object syncObj = new object();
             //int fileNum = 0;
             //Parallel.ForEach(files, delegate (string file)
+           
+
             foreach (var file in files)
             {
 
-
-                for (int j = 0; j < totalSizes; j++)
+                string tempFile = "TP.bmp";
+                for (int i = 0; i < totalAngles; i++)
                 {
-
-                    string tempFile = file;
-
-                    tempFile = "TP.bmp";
-                    string tempRotatedFile = "TPR.bmp";
-                    ResizeImage(0.6F - (float)j / 10, file, tempFile);
-
-
-                    for (int i = 0; i < totalAngles; i++)
+                    float ImageAngle = (float)i * 360 / totalAngles;
+                    float FileRatio = 1;
+                    rotateImage(file, ImageAngle, tempFile);
+                    for (int j = 0; j < totalSizes; j++)
                     {
-                        float ImageAngle = (float)i * 360 / totalAngles;
-                        rotateImage(tempFile, ImageAngle, tempRotatedFile);
                         Console.WriteLine("Size # " + j + " angle " + ImageAngle);
-                        Gray<byte>[,] preparedBWImage = ImageIO.LoadGray(tempRotatedFile).Clone();
+                        Gray<byte>[,] preparedBWImage = ImageIO.LoadGray(tempFile).Clone();
+                        FileRatio -= (float)0.01;
+                        int width = (int)(preparedBWImage.Width() * CabRatio);
+                        int height = (int)(preparedBWImage.Height() * CabRatio);
+                        if (FileRatio < 0)
+                        {
+                            Console.WriteLine("Too many sizes to build, Max 100");
+                            FileRatio = 1;
+                            break;
+                        }
+                        DotImaging.Primitives2D.Size Nsize = new DotImaging.Primitives2D.Size(width, height);
+                        ResiizedtemplatePic = ResizeExtensions_Gray.Resize(preparedBWImage, Nsize, Accord.Extensions.Imaging.InterpolationMode.NearestNeighbor);
+
                         try
                         {
-
                             var tp = TemplatePyramid.CreatePyramidFromPreparedBWImage(preparedBWImage, new FileInfo(file + "  " + i * 10).Name /*"OpenHand"*/, ImageAngle);
                             list.Add(tp);
                         }
@@ -557,8 +514,34 @@ namespace FastTemplateMatching
                         { }
                     }
                 }
+
+                //for (int j = 0; j < totalSizes; j++)
+                //{
+
+                //    string tempFile = file;
+
+                //    tempFile = "TP.bmp";
+                //    string tempRotatedFile = "TPR.bmp";
+                //    ResizeImage(0.6F - (float)j / 10, file, tempFile);
+
+
+                //    for (int i = 0; i < totalAngles; i++)
+                //    {
+                //        float ImageAngle = (float)i * 360 / totalAngles;
+                //        rotateImage(tempFile, ImageAngle, tempRotatedFile);
+                //        Console.WriteLine("Size # " + j + " angle " + ImageAngle);
+                //        Gray<byte>[,] preparedBWImage = ImageIO.LoadGray(tempRotatedFile).Clone();
+                //        try
+                //        {
+                //            var tp = TemplatePyramid.CreatePyramidFromPreparedBWImage(preparedBWImage, new FileInfo(file + "  " + i * 10).Name /*"OpenHand"*/, ImageAngle);
+                //            list.Add(tp);
+                //        }
+                //        catch (Exception)
+                //        { }
+                //    }
+                //}
             }
-            if(buildXMLTemplateFile)
+            if (buildXMLTemplateFile)
                 XMLTemplateSerializer<ImageTemplatePyramid<ImageTemplate>, ImageTemplate>.ToFile(list, Path.Combine(resourceDir, fileName.Substring(0, fileName.IndexOf(".")) + ".xml"));
             return list;
         }
