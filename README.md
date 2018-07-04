@@ -21,7 +21,12 @@ BEHIND THE SENCE:
     rotate then crop X 360 to get full degrees
     
 AFTER PRESSING THE BUTTON:
+    A temporary template model is shown in the frame as a preview so that users can know if there is noise that has been included unintentionaly. NOTE: Since the image would be cropped into smaller size (blue square) when making the template, Anything that outside the Green circle is eliminated for better visualization.
+    ![template-preview2](https://user-images.githubusercontent.com/22462126/42266721-cc7aaf46-7fa9-11e8-9543-9471b4b5dc6e.PNG)
+
 
 the system build a template based on this frame and adjust it to fit the framework and display the features (of templates) superimposed on the frame work 
+
+
 
     TO BE UPDATED
