@@ -20,3 +20,8 @@ BEHIND THE SENCE:
     The image is actually crop into square sized as the blue square in the image, 
     rotate then crop X 360 to get full degrees
     
+AFTER PRESSING THE BUTTON:
+
+the system build a template based on this frame and adjust it to fit the framework and display the features (of templates) superimposed on the frame work 
+
+    TO BE UPDATED
