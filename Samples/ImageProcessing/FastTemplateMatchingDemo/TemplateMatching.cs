@@ -293,6 +293,7 @@ namespace FastTemplateMatching
                             Cap = State.Rotate;
                             break;
                         case "r":
+                            templPyrs.RemoveAt(templPyrs.Count - 1);
                             Cap = State.Init;
                             break;
                         default:
@@ -306,7 +307,7 @@ namespace FastTemplateMatching
                     }
                     break;
                 case State.Rotate:
-                    rotateLoad(null,ResiizedtemplatePic, totalAngles,false,SqrSide,SqrSide);
+                    rotateLoad(null,ResiizedtemplatePic, 360 ,false,SqrSide,SqrSide);
 
                     Cap = State.ConfirmDone;
                     break;
@@ -353,7 +354,7 @@ namespace FastTemplateMatching
                 return;
 
             long preprocessTime, matchTime;
-            var bestRepresentatives = findObjects(frame, out preprocessTime, out matchTime, threshold, null);
+            var bestRepresentatives = findObjects(frame, out preprocessTime, out matchTime);
 
             /************************************ drawing ****************************************/
             foreach (var m in bestRepresentatives)
@@ -390,7 +391,7 @@ namespace FastTemplateMatching
                 for (int i = 0; i < t.Features.Count(); i++) {
 
 
-                    int p = (t.Features[i].X - image.Width() / 2) * (t.Features[i].X - image.Width() / 2) + (t.Features[i].Y - image.Height() / 2) * (t.Features[i].Y - image.Height() / 2);
+                    int p = (t.Features[i].X + t.BoundingRect.X - image.Width() / 2) * (t.Features[i].X + t.BoundingRect.Y - image.Width() / 2) + (t.Features[i].Y - image.Height() / 2) * (t.Features[i].Y - image.Height() / 2);
                     //Console.WriteLine(p + "    " + t.Features[i].X + "  " + t.Features[i].Y);
                     if (p > ((shortSide / 2) * (shortSide / 2)))
                     {
@@ -400,6 +401,7 @@ namespace FastTemplateMatching
                 }
                
                 t.Features = temp.ToArray();
+                
                 //Console.WriteLine("NUM of features: " + t.Features.Count());
                 
                 //GC.Collect();

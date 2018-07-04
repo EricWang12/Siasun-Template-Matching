@@ -65,7 +65,7 @@ namespace FastTemplateMatching
             
             fileName = "you-win-for-now-.bmp";
 
-            TMP.initialize(fileName,80,20,3);
+            //TMP.initialize(fileName,80,20,3);
            
             try
             {
@@ -94,7 +94,7 @@ namespace FastTemplateMatching
         void videoCapture_NewFrame(object sender, EventArgs e)
         {
 
-            TMP.CaptureFrame( videoCapture, this.pictureBox);
+            TMP.TemplateCapture( videoCapture, this.pictureBox);
 
         }
 

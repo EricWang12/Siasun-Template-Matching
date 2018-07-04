@@ -114,7 +114,7 @@ namespace Accord.Extensions.Imaging.Algorithms.LINE2D
         /// <summary>
         /// Template bounding rectangle.
         /// </summary>
-        protected Rectangle BoundingRect = Rectangle.Empty;
+        public Rectangle BoundingRect = Rectangle.Empty;
 
         /// <summary>
         /// Creates template from the input image by using provided parameters.

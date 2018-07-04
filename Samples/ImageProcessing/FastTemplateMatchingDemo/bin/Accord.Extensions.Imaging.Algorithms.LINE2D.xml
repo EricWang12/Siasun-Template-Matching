@@ -660,6 +660,7 @@
             <param name="minFeatureStrength">Minimum gradient value for the feature.</param>
             <param name="maxNumberOfFeatures">Maximum number of features per template. The features will be extracted so that their locations are semi-uniformly spread.</param>
             <param name="classLabel">Template class label.</param>
+            <param name="angle"></param>
         </member>
         <member name="M:Accord.Extensions.Imaging.Algorithms.LINE2D.ImageTemplate.Initialize(DotImaging.Gray{System.Byte}[0:,0:],System.Int32,System.Int32,System.String,System.Single)">
             <summary>
