@@ -81,9 +81,11 @@ namespace Accord.Extensions.Imaging.Algorithms.LINE2D
         /// <param name="minFeatureStrength">Minimum gradient value for the feature.</param>
         /// <param name="maxNumberOfFeatures">Maximum number of features per template. The features will be extracted so that their locations are semi-uniformly spread.</param>
         /// <param name="classLabel">Template class label.</param>
+        /// <param name="angle"></param>
         public virtual void Initialize(Bgr<byte>[,] sourceImage, int minFeatureStrength, int maxNumberOfFeatures, string classLabel, float angle)
         {
             Gray<int>[,] sqrMagImg;
+            // so at this point oriImage is a image full of degrees? not gradient?
             Gray<int>[,] orientationImg = GradientComputation.Compute(sourceImage, out sqrMagImg, minFeatureStrength);
 
             Func<Feature, int> featureImportanceFunc = (feature) => sqrMagImg[feature.Y, feature.X].Intensity;
@@ -127,6 +129,7 @@ namespace Accord.Extensions.Imaging.Algorithms.LINE2D
             maxNumberOfFeatures = System.Math.Max(0, System.Math.Min(maxNumberOfFeatures, GlobalParameters.MAX_NUM_OF_FEATURES));
             featureImportanceFunc = (featureImportanceFunc != null) ? featureImportanceFunc: (feature) => 0;
 
+            // a map of [0..128]
             Gray<byte>[,] importantQuantizedOrient = FeatureMap.Calculate(orientation, 0);
             List<Feature> features = ExtractTemplate(importantQuantizedOrient, maxNumberOfFeatures, featureImportanceFunc);
 

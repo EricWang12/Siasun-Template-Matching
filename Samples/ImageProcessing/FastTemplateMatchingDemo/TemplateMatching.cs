@@ -37,8 +37,6 @@ namespace FastTemplateMatching
         private int totalSizes { get; set; }
 
         private LinearizedMapPyramid linPyr = null;
-        
-        // Find Object in a preprocessed img
 
         public TemplateMatching() { }
 
@@ -381,7 +379,7 @@ namespace FastTemplateMatching
             if (Cap != State.Init) return;
             Cap = State.BuildingTemplate;
         }
-#endregion
+
 
         public void validateFeatures(ref TemplatePyramid reps, Gray<byte>[,] image)
         {
@@ -409,26 +407,11 @@ namespace FastTemplateMatching
             
         }
 
+        #endregion
+
+        #region default methods
 
 
-        /// <summary>
-        /// set Number of Sizes, default to 1
-        /// </summary
-        public void setNumOfAngles(int angle)
-        {
-            if (angle <= 0) angle = 1;
-            totalAngles = angle;
-        }
-        /// <summary>
-        /// set Number of Sizes, default to 1
-        /// </summary
-        public void setNumOfSizes(int Num)
-        {
-            if (Num <= 0) Num = 1;
-            totalSizes = Num;
-        }
-
-        
         private void rotateImage(string inputFile, float angle, string outFile)
         {
             Bitmap bitmap = new Bitmap(inputFile, true);
@@ -463,7 +446,7 @@ namespace FastTemplateMatching
 
         }
 
-        public List<TemplatePyramid> fromFiles(String fileName, bool buildXMLTemplateFile)
+        public List<TemplatePyramid> fromFiles(String fileName, bool buildXMLTemplateFile , int angles = 360, int sizes = 1)
         {
             Console.WriteLine("Building templates from files...");
 
@@ -484,12 +467,12 @@ namespace FastTemplateMatching
             {
 
                 string tempFile = "TP.bmp";
-                for (int i = 0; i < totalAngles; i++)
+                for (int i = 0; i < angles; i++)
                 {
                     float ImageAngle = (float)i * 360 / totalAngles;
                     float FileRatio = 1;
                     rotateImage(file, ImageAngle, tempFile);
-                    for (int j = 0; j < totalSizes; j++)
+                    for (int j = 0; j < sizes; j++)
                     {
                         Console.WriteLine("Size # " + j + " angle " + ImageAngle);
                         Gray<byte>[,] preparedBWImage = ImageIO.LoadGray(tempFile).Clone();
@@ -619,5 +602,6 @@ namespace FastTemplateMatching
             return bestRepresentatives;
         }
 
+        #endregion
     }
 }

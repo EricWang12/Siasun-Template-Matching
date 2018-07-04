@@ -261,7 +261,9 @@ namespace Accord.Extensions.Imaging.Algorithms.LINE2D
         /// <returns>Feature map.</returns>
         public static Gray<byte>[,] Calculate(Gray<int>[,] orientationDegImg, int spreadNeigborhood, int minSameOrientations = 4)
         {
+            //Quantinize the orientationIMG [ 1..360 --> 0..7 ]
             Gray<byte>[,] quantizedOrient = FeatureMap.QuantizeOrientations(orientationDegImg);
+            // Convert the neightbor to 8-bit number [ correspond to Image J in the paper] [0..7 --> 1,2,4,8,,,128]
             Gray<byte>[,] importantQuantizedOrient = FeatureMap.RetainImportantQuantizedOrientations(quantizedOrient, minSameOrientations);
 
             Gray<byte>[,] sprededQuantizedOrient = importantQuantizedOrient;
