@@ -13,17 +13,17 @@ Three of the libraries are included----
 
 * Image processing
 
- __Accord.Extensions.Imaging.Algorithms package__ 
+ __Accord.Extensions.Imaging.Algorithms package__ \n
  Implements image processing algorithms as .NET array extensions including the Accord.NET algorithms.
 
 * Math libraries
 
- __Accord.Extensions.Math package__ 
+ __Accord.Extensions.Math package__ \n
   Fluent matrix extensions. Geometry and graph structures and extensions.
 
 * Support libraries
 
- __Accord.Extensions.Imaging.AForgeInterop package__ 
+ __Accord.Extensions.Imaging.AForgeInterop package__ \n
  Interoperability extensions between .NET array and AForge's UnmanagedImage.
 
 in order to use the libraries, TYPE in the package manager:
