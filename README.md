@@ -35,7 +35,7 @@ Three of the libraries are included----
     PM> Install-Package Accord.Extensions.Imaging.AForgeInterop -Version 3.0.1
 
 
-DEMO:
+## DEMO demonstration:
 
 For now it's a demo which is basically a state machine :
 INIT -> BUILD TEMPLATE -> CALIBRATE THE TEMPLATE IMAGE -> ROTATE TO GET TEMPLATE IN DIFFERENT ANGLES -> DONE
