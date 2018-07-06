@@ -27,7 +27,7 @@ Three of the libraries are included----
  Interoperability extensions between .NET array and AForge's UnmanagedImage.
 
 
-####__in order to use the libraries, TYPE in the package manager:__
+#### __in order to use the libraries, TYPE in the package manager:__
 
     PM> Install-Package Accord.Extensions.Imaging.Algorithms -Version 3.0.1
     PM> Install-Package Accord.Extensions.Math -Version 3.0.1
