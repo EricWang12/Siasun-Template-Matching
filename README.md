@@ -10,23 +10,23 @@ https://github.com/dajuric/accord-net-extensions
 First use:
 USING THE LIBRARIES: 
 Three of the libraries are included----
-Image processing
+⋅⋅* Image processing
 Accord.Extensions.Imaging.Algorithms package 
 Implements image processing algorithms as .NET array extensions including the Accord.NET algorithms.
 
-Math libraries
+⋅⋅* Math libraries
 Accord.Extensions.Math package 
 Fluent matrix extensions. Geometry and graph structures and extensions.
 
-Support libraries
+⋅⋅* Support libraries
 Accord.Extensions.Imaging.AForgeInterop package 
 Interoperability extensions between .NET array and AForge's UnmanagedImage.
 
 in order to use the libraries, TYPE in the package manager:
 
-    PM> Install-Package Accord.Extensions.Imaging.Algorithms -Version 3.0.1
-    PM> Install-Package Accord.Extensions.Math -Version 3.0.1
-    PM> Install-Package Accord.Extensions.Imaging.AForgeInterop -Version 3.0.1
+    `PM> Install-Package Accord.Extensions.Imaging.Algorithms -Version 3.0.1`
+    `PM> Install-Package Accord.Extensions.Math -Version 3.0.1`
+    `PM> Install-Package Accord.Extensions.Imaging.AForgeInterop -Version 3.0.1`
 
 
 DEMO:
@@ -44,6 +44,9 @@ BEHIND THE SENCE:
     rotate then crop X 360 to get full degrees
     
 AFTER PRESSING THE BUTTON:
+
+![template-preview2](https://user-images.githubusercontent.com/22462126/42362241-f9a27b80-8124-11e8-955e-c5c7b7dc5ed3.PNG)
+
 
 the system build a template based on this frame and adjust it to fit the framework and display the features (of templates) superimposed on the frame work 
 
