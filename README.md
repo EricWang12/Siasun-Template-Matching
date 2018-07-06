@@ -7,6 +7,28 @@ https://github.com/dajuric/accord-net-extensions
  <a href="https://github.com/dajuric/accord-net-extensions/raw/master/Deployment/Documentation/Help/Accord.NET%20Extensions%20Documentation.chm"> 
  <img src="https://img.shields.io/badge/Help-download-yellow.svg?style=flat-square" alt="Help"/>  </a>
 
+First use:
+USING THE LIBRARIES: 
+Three of the libraries are included----
+Image processing
+Accord.Extensions.Imaging.Algorithms package 
+Implements image processing algorithms as .NET array extensions including the Accord.NET algorithms.
+
+Math libraries
+Accord.Extensions.Math package 
+Fluent matrix extensions. Geometry and graph structures and extensions.
+
+Support libraries
+Accord.Extensions.Imaging.AForgeInterop package 
+Interoperability extensions between .NET array and AForge's UnmanagedImage.
+
+in order to use the libraries, TYPE in the package manager:
+    PM> Install-Package Accord.Extensions.Imaging.Algorithms -Version 3.0.1
+    PM> Install-Package Accord.Extensions.Math -Version 3.0.1
+    PM> Install-Package Accord.Extensions.Imaging.AForgeInterop -Version 3.0.1
+
+
+DEMO:
 
 For now it's a demo which is basically a state machine :
 INIT -> BUILD TEMPLATE -> CALIBRATE THE TEMPLATE IMAGE -> ROTATE TO GET TEMPLATE IN DIFFERENT ANGLES -> DONE
@@ -21,12 +43,7 @@ BEHIND THE SENCE:
     rotate then crop X 360 to get full degrees
     
 AFTER PRESSING THE BUTTON:
-    A temporary template model is shown in the frame as a preview so that users can know if there is noise that has been included unintentionaly. NOTE: Since the image would be cropped into smaller size (blue square) when making the template, Anything that outside the Green circle is eliminated for better visualization.
-    ![template-preview2](https://user-images.githubusercontent.com/22462126/42266721-cc7aaf46-7fa9-11e8-9543-9471b4b5dc6e.PNG)
-
 
 the system build a template based on this frame and adjust it to fit the framework and display the features (of templates) superimposed on the frame work 
-
-
 
     TO BE UPDATED

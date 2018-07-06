@@ -27,9 +27,6 @@ namespace FastTemplateMatching
 {
     public class TemplateMatching 
     {
- 
-
-        //int minDetectionsPerGroup = 0; //for match grouping (postprocessing)
 
         public List<TemplatePyramid> LocaltemplPyrs = null;
 
@@ -37,8 +34,7 @@ namespace FastTemplateMatching
 
         public TemplateMatching() { }
 
-        #region initialize with local file
-
+      
         ///// <summary>
         ///// Initialize with a threshold setting and Angle Number setting
         ///// </summary
@@ -77,9 +73,8 @@ namespace FastTemplateMatching
         {
             templPyrs = fromFiles(fileName, saveToXml);
         }
-        #endregion
 
-        #region build template with Camera
+        #region build template with Camera---DEMO
         static int TPindex = 0;
 
       
@@ -399,6 +394,22 @@ namespace FastTemplateMatching
             TemplateCapture(null,ref templPyrs, videoCapture, pictureBox);
         }
 
+        /// <summary>
+        /// (use for the button:) start capture the template from init state
+        /// </summary>
+        public void TPCapture()
+        {
+            if (Cap != State.Init) return;
+            Cap = State.BuildingTemplate;
+        }
+
+        /// <summary>
+        /// update the framework with objects (templates) find in the frame
+        /// </summary>
+        /// <param name="templPyrs">the list of templates</param>
+        /// <param name="videoCapture">the video stream</param>
+        /// <param name="pictureBox">the picture box of window form</param>
+        /// /// <returns>nothing.</returns>
         public void CaptureFrame(List<TemplatePyramid> templPyrs, ImageStreamReader videoCapture, PictureBox pictureBox)
         {
             DotImaging.Font font = new DotImaging.Font(FontTypes.HERSHEY_DUPLEX, 1, 0.1f);
@@ -429,16 +440,6 @@ namespace FastTemplateMatching
             //frame.Save(String.Format("C:/probaImages/imgMarked_{0}.jpg", i)); b.Save(String.Format("C:/probaImages/img_{0}.jpg", i)); i++;
             GC.Collect();
         }
-
-        public void TPCapture()
-        {
-            if (Cap != State.Init) return;
-            Cap = State.BuildingTemplate;
-        }
-
-
-
-
         #endregion
 
         #region default methods
