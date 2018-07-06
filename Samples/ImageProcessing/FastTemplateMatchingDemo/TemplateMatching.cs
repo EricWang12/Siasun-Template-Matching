@@ -134,7 +134,7 @@ namespace FastTemplateMatching
                 for (int i = 0; i < t.Features.Count(); i++) {
 
 
-                    int p = (t.Features[i].X + t.BoundingRect.X - image.Width() / 2) * (t.Features[i].X + t.BoundingRect.Y - image.Width() / 2) + (t.Features[i].Y - image.Height() / 2) * (t.Features[i].Y - image.Height() / 2);
+                    int p = (t.Features[i].X + t.BoundingRect.X - image.Width() / 2) * (t.Features[i].X + t.BoundingRect.X - image.Width() / 2) + (t.Features[i].Y + t.BoundingRect.Y - image.Height() / 2) * (t.Features[i].Y + t.BoundingRect.Y - image.Height() / 2);
                     //Console.WriteLine(p + "    " + t.Features[i].X + "  " + t.Features[i].Y);
                     if (p > ((shortSide / 2) * (shortSide / 2)))
                     {
@@ -188,6 +188,10 @@ namespace FastTemplateMatching
         #region template capture variables
         Bgr<byte>[,] frame = null;
         float CabRatio = 1;
+
+        int totalAngles = 360;
+        int totalSizes = 1;
+
 
         Gray<byte>[,] ResiizedtemplatePic, templatePic;
         private State Cap = State.Init;
@@ -344,7 +348,7 @@ namespace FastTemplateMatching
                     break;
                 case State.Rotate:
                     int SqrSide = (int)(frame.Height() / Math.Sqrt(2));
-                    rotateLoad(templPyrs, ResiizedtemplatePic, 10 ,SqrSide,SqrSide,false);
+                    rotateLoad(templPyrs, ResiizedtemplatePic, totalAngles ,SqrSide,SqrSide,false);
 
                     Cap = State.ConfirmDone;
                     break;
@@ -468,12 +472,12 @@ namespace FastTemplateMatching
         /// <param name="sized">number of sizes, default to 1</param>
         /// <param name="minRatio">The ratio of smallest size to original, default to 0.6</param>
         /// <returns>List of templates.</returns>
-        public static List<TemplatePyramid> buildTemplate(Gray<byte>[,] image, bool buildXMLTemplateFile, int angles, int sizes = 1, float minRatio = 0.6f)
+        public static List<TemplatePyramid> buildTemplate(Gray<byte>[,] image, int Width, int Height, bool buildXMLTemplateFile = false, int angles = 360, int sizes = 1, float minRatio = 0.6f)
         {
             List<TemplatePyramid> retList = new List<TemplatePyramid>();
             float Ratio = 1;
             Gray<byte>[,] tempIMG;
-            rotateLoad(retList, image, angles,image.Width(), image.Height(), false);
+            rotateLoad(retList, image, angles, Width, Height, false);
             for (int i = 0; i < sizes -1; i++)
             {
                 Ratio -= (float)(1 - minRatio) / sizes;
@@ -483,8 +487,12 @@ namespace FastTemplateMatching
                 DotImaging.Primitives2D.Size Nsize = new DotImaging.Primitives2D.Size(width, height);
                 tempIMG = ResizeExtensions_Gray.Resize(image, Nsize, Accord.Extensions.Imaging.InterpolationMode.NearestNeighbor);
 
-                rotateLoad(retList, tempIMG, angles, image.Width(), image.Height(), buildXMLTemplateFile);
+                rotateLoad(retList, tempIMG, angles, Width, Height, false);
             }
+            if (buildXMLTemplateFile)
+                XMLTemplateSerializer<ImageTemplatePyramid<ImageTemplate>, ImageTemplate>.ToFile(retList, 
+                    Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName, "Resources", "template" + ".xml"));
+
             return retList;
 
         }
@@ -497,7 +505,7 @@ namespace FastTemplateMatching
         /// <param name="angles">the number of angles, default to 360</param>
         /// <param name="sized">number of sizes, default to 1</param>
         /// <returns>List of templates.</returns>
-        public static List<TemplatePyramid> fromFiles(String fileName, bool buildXMLTemplateFile , int angles = 360, int sizes = 1)
+        public static List<TemplatePyramid> fromFiles(String fileName, bool buildXMLTemplateFile = false, int angles = 360, int sizes = 1)
         {
             Console.WriteLine("Building templates from files...");
             Gray<byte>[,] ResizedtemplatePic;
