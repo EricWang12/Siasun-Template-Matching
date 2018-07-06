@@ -27,14 +27,11 @@ namespace FastTemplateMatching
 {
     public class TemplateMatching 
     {
-        public int threshold { get; set; }
+ 
 
-        int minDetectionsPerGroup = 0; //for match grouping (postprocessing)
+        //int minDetectionsPerGroup = 0; //for match grouping (postprocessing)
 
-        public List<TemplatePyramid> templPyrs = null;
-
-        private int totalAngles { get; set; }
-        private int totalSizes { get; set; }
+        public List<TemplatePyramid> LocaltemplPyrs = null;
 
         private LinearizedMapPyramid linPyr = null;
 
@@ -42,79 +39,58 @@ namespace FastTemplateMatching
 
         #region initialize with local file
 
-        /// <summary>
-        /// Initialize with a threshold setting and Angle Number setting
-        /// </summary
-        public void initialize(String fileName, int inputThreshold = 80 , float angleGap = 1 , int sizes = 1) 
-        {
+        ///// <summary>
+        ///// Initialize with a threshold setting and Angle Number setting
+        ///// </summary
+        //public void initialize(String fileName, int inputThreshold = 80 , float angleGap = 1 , int sizes = 1) 
+        //{
 
-            this.threshold = inputThreshold;
-            this.totalAngles = (int)(360 / angleGap);
-            this.totalSizes = sizes;
-#if AUTOINIT
-            try
-            {
-                Console.WriteLine("Reading from existing Template Data");
-                templPyrs = fromXML(fileName);
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("\nTemplate NOT found! ");
-                templPyrs = fromFiles(fileName);
-            }
-            Console.WriteLine("COMPLETE!");
-#else
-#if READFILE
-            templPyrs = fromFiles(fileName, true);
-#else
-            templPyrs = fromXML(fileName);
-#endif
+        //    this.threshold = inputThreshold;
+        //    this.totalAngles = (int)(360 / angleGap);
+        //    this.totalSizes = sizes;
+//#if AUTOINIT
+//            try
+//            {
+//                Console.WriteLine("Reading from existing Template Data");
+//                templPyrs = fromXML(fileName);
+//            }
+//            catch (Exception)
+//            {
+//                Console.WriteLine("\nTemplate NOT found! ");
+//                templPyrs = fromFiles(fileName);
+//            }
+//            Console.WriteLine("COMPLETE!");
+//#else
+//#if READFILE
+//            templPyrs = fromFiles(fileName, true);
+//#else
+//            templPyrs = fromXML(fileName);
+//#endif
 
-#endif
+//#endif
             
-        }
+//        }
         /// <summary>
         /// Manually update/build Template
         /// </summary
-        public void buildTemplate(string fileName, bool saveToXml)
+        public static  void buildTemplate(string fileName, ref List<TemplatePyramid> templPyrs, bool saveToXml = false)
         {
             templPyrs = fromFiles(fileName, saveToXml);
         }
         #endregion
 
         #region build template with Camera
+        static int TPindex = 0;
 
+      
 
-        Bgr<byte>[,] frame = null;
-        //Bgr<byte>[,] temp;
-        int i;
-        int TPindex = 0;
-        float CabRatio = 1;
-
-        Gray<byte>[,] ResiizedtemplatePic, templatePic;
-        State Cap = State.Init;
-
-        int RectWidth, RectHeight;
-        int SqrSide;
-        float RectRatio;
-
-        enum State
-        {
-            Init,
-            BuildingTemplate,
-            Calibrate,
-            Confirm,
-            Rotate,
-            ConfirmDone,
-            Done
-        }
-
-       
         //Load the images into the specific retList, put null to use the default templpyr
-        private void rotateLoad(List<TemplatePyramid> retList,Gray<byte>[,] image, int angles, bool buildXMLTemplateFile, int Width, int Height)
+        private static void rotateLoad(List<TemplatePyramid> retList, Gray<byte>[,] image, int angles, int Width, int Height, bool buildXMLTemplateFile = false)
         {
+            
             string resourceDir = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName, "Resources");
-            retList = (retList == null ? templPyrs : retList);
+            retList = (retList == null ? new List<TemplatePyramid>() : retList);
+            
             for (int i = 0; i < angles; i++)
             {
                 float ImageAngle = (float)i * 360 / angles;
@@ -144,13 +120,59 @@ namespace FastTemplateMatching
                 { }
             }
             if (buildXMLTemplateFile)
-                XMLTemplateSerializer<ImageTemplatePyramid<ImageTemplate>, ImageTemplate>.ToFile(templPyrs, Path.Combine(resourceDir, "template" + ".xml"));
+                XMLTemplateSerializer<ImageTemplatePyramid<ImageTemplate>, ImageTemplate>.ToFile(retList, Path.Combine(resourceDir, "template" + ".xml"));
 
         }
-
-
-        private void drawFrameWork(Bgr<byte>[,] inputFrame)
+       
+        /// <summary>
+        /// Given a specific image, eliminate the redunant features (i.e. remove any feature that is outside the green circle
+        /// </summary>
+        /// <param name="reps">current template pyrimid to be checked</param>
+        /// <param name="image">the video image, served as a size comparator</param>
+        /// /// <returns>nothing.</returns>
+        public static void validateFeatures(ref TemplatePyramid reps, Gray<byte>[,] image)
         {
+            List<Feature> temp;
+            int shortSide = (image.Width() < image.Height()) ? image.Width() : image.Height();
+            foreach(Template t in reps.Templates) {
+                temp = t.Features.ToList();
+                for (int i = 0; i < t.Features.Count(); i++) {
+
+
+                    int p = (t.Features[i].X + t.BoundingRect.X - image.Width() / 2) * (t.Features[i].X + t.BoundingRect.Y - image.Width() / 2) + (t.Features[i].Y - image.Height() / 2) * (t.Features[i].Y - image.Height() / 2);
+                    //Console.WriteLine(p + "    " + t.Features[i].X + "  " + t.Features[i].Y);
+                    if (p > ((shortSide / 2) * (shortSide / 2)))
+                    {
+                        //Console.WriteLine(p + "asdf gsfdgafhsdgsdfhsdhsdhsd    " + t.Features[i].X + "  " + t.Features[i].Y);
+                        temp.Remove(t.Features[i]);
+                    }
+                }
+               
+                t.Features = temp.ToArray();
+                
+                //Console.WriteLine("NUM of features: " + t.Features.Count());
+                
+                //GC.Collect();
+            }
+            
+        }
+
+        /// <summary>
+        /// Draw the framework ( a small red circle, blue square and a big green circle)
+        /// </summary>
+        /// <param name="frame">the video frame that about to draw on</param>
+        /// /// <returns>nothing.</returns>
+        private static void drawFrameWork(Bgr<byte>[,] frame)
+        {
+            int RectWidth, RectHeight;
+            int SqrSide;
+            float RectRatio;
+            int maxside = (int)(Math.Sqrt(frame.Width() * frame.Width() + frame.Height() * frame.Height()));
+            RectRatio = (float)(frame.Height() > frame.Width() ? frame.Width() : frame.Height()) / maxside;
+            //Console.WriteLine(frame.Height() + "  "+  frame.Width() +"   "+maxside + "  " + RectRatio);
+            RectWidth = (int)(frame.Width() * RectRatio);
+            RectHeight = (int)(frame.Height() * RectRatio);
+
             DotImaging.Primitives2D.Rectangle rec = new DotImaging.Primitives2D.Rectangle((frame.Width() - RectWidth) / 2, (frame.Height() - RectHeight) / 2, (int)(frame.Width() * RectRatio), (int)(frame.Height() * RectRatio));
             //frame.Draw(rec, Bgr<byte>.Blue, 2);
             rec.Width = rec.Height;
@@ -168,7 +190,24 @@ namespace FastTemplateMatching
 
         }
 
-        //ImageStreamReader videoCapture;
+        #region template capture variables
+        Bgr<byte>[,] frame = null;
+        float CabRatio = 1;
+
+        Gray<byte>[,] ResiizedtemplatePic, templatePic;
+        private State Cap = State.Init;
+
+        enum State
+        {
+            Init,
+            BuildingTemplate,
+            Calibrate,
+            Confirm,
+            Rotate,
+            ConfirmDone,
+            Done
+        }
+        #endregion
 
         /// <summary>
         /// Build template with the cemara
@@ -178,8 +217,14 @@ namespace FastTemplateMatching
         /// rotate for angles ->done and return
         /// 
         /// make sure the object is in green circle
-        /// </summary
-        public void TemplateCapture(string name, ImageStreamReader videoCapture, PictureBox pictureBox, float minRatio = 0.4f)
+        /// </summary>
+        /// <param name="name">template name, default to "Template" if the name is null</param>
+        /// <param name="templPyrs">the template list that to be used</param
+        /// <param name="videoCapture">the video stream</param>
+        /// <param name="pictureBox">the picture box of window form</param>
+        /// <param name="minRatio">The ratio of smallest size to original, default to 0.4</param>
+        /// /// <returns>nothing.</returns>
+        public void TemplateCapture(string name, ref List<TemplatePyramid> templPyrs, ImageStreamReader videoCapture, PictureBox pictureBox, float minRatio = 0.4f)
         {
             
             if (name == null) name = " Template";
@@ -202,15 +247,11 @@ namespace FastTemplateMatching
 
                 case State.Init:
                     videoCapture.ReadTo(ref frame);
-
                     if (frame == null)
                         return;
-                    int maxside = (int)(Math.Sqrt(frame.Width() * frame.Width() + frame.Height() * frame.Height()));
-                    RectRatio = (float)(frame.Height() > frame.Width() ? frame.Width() : frame.Height()) / maxside;
-                    //Console.WriteLine(frame.Height() + "  "+  frame.Width() +"   "+maxside + "  " + RectRatio);
-                    RectWidth = (int)(frame.Width() * RectRatio);
-                    RectHeight = (int)(frame.Height() * RectRatio);
 
+
+                    
                     drawFrameWork(frame);
 
                     pictureBox.Image = frame.ToBitmap(); //it will be just casted (data is shared) 24bpp color
@@ -229,7 +270,7 @@ namespace FastTemplateMatching
                     {
                         if (templPyrs == null)
                             templPyrs = new List<TemplatePyramid>();
-                        rotateLoad(null,templatePic, 1,false,frame.Width(), frame.Height());
+                        rotateLoad(templPyrs, templatePic, 1, frame.Width(), frame.Height());
                         //templPyrs.Add(TemplatePyramid.CreatePyramidFromPreparedBWImage(
                         //templatePic, " Template #" + TPindex++ , 0));
                         //templPyrs = BTlist;
@@ -246,7 +287,7 @@ namespace FastTemplateMatching
 
                 case State.Calibrate:
                     Console.WriteLine("calibrating template   " + CabRatio + "    " + templatePic.Width() * CabRatio);
-                    var bestRepresentatives = findObjects(frame);
+                    var bestRepresentatives = findObjects(frame, templPyrs);
                     if (bestRepresentatives.Count == 0)
                     {
                         if (templPyrs.Count != 0) templPyrs.RemoveAt(templPyrs.Count - 1);
@@ -265,7 +306,7 @@ namespace FastTemplateMatching
                         try
                         {
                             templPyrs.Add(TemplatePyramid.CreatePyramidFromPreparedBWImage(
-                            ResiizedtemplatePic, new FileInfo(name + " #" + TPindex++).Name /*"OpenHand"*/, 0));
+                            ResiizedtemplatePic, new FileInfo(name + " #" + TPindex++).Name, 0));
                         }
                         catch (Exception)
                         {
@@ -276,7 +317,7 @@ namespace FastTemplateMatching
                     {
                         ResiizedtemplatePic = (ResiizedtemplatePic == null ? templatePic : ResiizedtemplatePic);
 
-                        CaptureFrame(videoCapture, pictureBox);
+                        CaptureFrame(templPyrs,videoCapture, pictureBox);
                         drawFrameWork(frame);
                         pictureBox.Image = frame.ToBitmap(); //it will be just casted (data is shared) 24bpp color
 
@@ -307,7 +348,8 @@ namespace FastTemplateMatching
                     }
                     break;
                 case State.Rotate:
-                    rotateLoad(null,ResiizedtemplatePic, 360 ,false,SqrSide,SqrSide);
+                    int SqrSide = (int)(frame.Height() / Math.Sqrt(2));
+                    rotateLoad(templPyrs, ResiizedtemplatePic, 10 ,SqrSide,SqrSide,false);
 
                     Cap = State.ConfirmDone;
                     break;
@@ -327,7 +369,7 @@ namespace FastTemplateMatching
                     break;
                 //break;
                 case State.Done:
-                    CaptureFrame(videoCapture, pictureBox);
+                    CaptureFrame(templPyrs,videoCapture, pictureBox);
                     GC.Collect();
                     break;
                     //break;
@@ -338,13 +380,26 @@ namespace FastTemplateMatching
 
 
         }
-
-        public void TemplateCapture( ImageStreamReader videoCapture, PictureBox pictureBox)
+       
+        /// <summary>
+        /// Build template with the cemara
+        /// 
+        /// State Machine---->
+        /// int -> build template -> resize to find the best -> draw the template then comfirm by user ->
+        /// rotate for angles ->done and return
+        /// 
+        /// make sure the object is in green circle
+        /// </summary>
+        /// <param name="templPyrs">the template list that to be used</param
+        /// <param name="videoCapture">the video stream</param>
+        /// <param name="pictureBox">the picture box of window form</param>
+        /// /// <returns>nothing.</returns>
+        public void TemplateCapture(ref List<TemplatePyramid> templPyrs, ImageStreamReader videoCapture, PictureBox pictureBox)
         {
-            TemplateCapture(null, videoCapture, pictureBox);
+            TemplateCapture(null,ref templPyrs, videoCapture, pictureBox);
         }
 
-        public void CaptureFrame(ImageStreamReader videoCapture, PictureBox pictureBox)
+        public void CaptureFrame(List<TemplatePyramid> templPyrs, ImageStreamReader videoCapture, PictureBox pictureBox)
         {
             DotImaging.Font font = new DotImaging.Font(FontTypes.HERSHEY_DUPLEX, 1, 0.1f);
 
@@ -354,7 +409,7 @@ namespace FastTemplateMatching
                 return;
 
             long preprocessTime, matchTime;
-            var bestRepresentatives = findObjects(frame, out preprocessTime, out matchTime);
+            var bestRepresentatives = findObjects(frame, templPyrs, out preprocessTime, out matchTime);
 
             /************************************ drawing ****************************************/
             foreach (var m in bestRepresentatives)
@@ -382,39 +437,14 @@ namespace FastTemplateMatching
         }
 
 
-        public void validateFeatures(ref TemplatePyramid reps, Gray<byte>[,] image)
-        {
-            List<Feature> temp;
-            int shortSide = (image.Width() < image.Height()) ? image.Width() : image.Height();
-            foreach(Template t in reps.Templates) {
-                temp = t.Features.ToList();
-                for (int i = 0; i < t.Features.Count(); i++) {
 
-
-                    int p = (t.Features[i].X + t.BoundingRect.X - image.Width() / 2) * (t.Features[i].X + t.BoundingRect.Y - image.Width() / 2) + (t.Features[i].Y - image.Height() / 2) * (t.Features[i].Y - image.Height() / 2);
-                    //Console.WriteLine(p + "    " + t.Features[i].X + "  " + t.Features[i].Y);
-                    if (p > ((shortSide / 2) * (shortSide / 2)))
-                    {
-                        //Console.WriteLine(p + "asdf gsfdgafhsdgsdfhsdhsdhsd    " + t.Features[i].X + "  " + t.Features[i].Y);
-                        temp.Remove(t.Features[i]);
-                    }
-                }
-               
-                t.Features = temp.ToArray();
-                
-                //Console.WriteLine("NUM of features: " + t.Features.Count());
-                
-                //GC.Collect();
-            }
-            
-        }
 
         #endregion
 
         #region default methods
 
 
-        private void rotateImage(string inputFile, float angle, string outFile)
+        private static void rotateImage(string inputFile, float angle, string outFile)
         {
             Bitmap bitmap = new Bitmap(inputFile, true);
             int maxside = (int)(Math.Sqrt(bitmap.Width * bitmap.Width + bitmap.Height * bitmap.Height));
@@ -428,30 +458,48 @@ namespace FastTemplateMatching
             returnBitmap.Save(outFile);
         }
 
-        public List<TemplatePyramid> buildTemplate(Gray<byte>[,] image, bool buildXMLTemplateFile, int angles, int sizes = 1, float minRatio = 0.6f)
+        /// <summary>
+        /// build template List from a Gray image
+        /// </summary>
+        /// <param name="image">input image</param>
+        /// <param name="buildXMLTemplateFile">true to build a xml file with current templates</param>
+        /// <param name="angles">the number of angles, default to 360</param>
+        /// <param name="sized">number of sizes, default to 1</param>
+        /// <param name="minRatio">The ratio of smallest size to original, default to 0.6</param>
+        /// <returns>List of templates.</returns>
+        public static List<TemplatePyramid> buildTemplate(Gray<byte>[,] image, bool buildXMLTemplateFile, int angles, int sizes = 1, float minRatio = 0.6f)
         {
             List<TemplatePyramid> retList = new List<TemplatePyramid>();
             float Ratio = 1;
-            rotateLoad(retList, image, angles, false,image.Width(), image.Height());
+            Gray<byte>[,] tempIMG;
+            rotateLoad(retList, image, angles,image.Width(), image.Height(), false);
             for (int i = 0; i < sizes -1; i++)
             {
                 Ratio -= (float)(1 - minRatio) / sizes;
-                int width = (int)(templatePic.Width() * Ratio);
-                int height = (int)(templatePic.Height() * Ratio);
+                int width = (int)(image.Width() * Ratio);
+                int height = (int)(image.Height() * Ratio);
 
                 DotImaging.Primitives2D.Size Nsize = new DotImaging.Primitives2D.Size(width, height);
-                image = ResizeExtensions_Gray.Resize(image, Nsize, Accord.Extensions.Imaging.InterpolationMode.NearestNeighbor);
+                tempIMG = ResizeExtensions_Gray.Resize(image, Nsize, Accord.Extensions.Imaging.InterpolationMode.NearestNeighbor);
 
-                rotateLoad(retList, image, angles, buildXMLTemplateFile, image.Width(), image.Height());
+                rotateLoad(retList, tempIMG, angles, image.Width(), image.Height(), buildXMLTemplateFile);
             }
             return retList;
 
         }
 
-        public List<TemplatePyramid> fromFiles(String fileName, bool buildXMLTemplateFile , int angles = 360, int sizes = 1)
+        /// <summary>
+        /// build template List from a XML file
+        /// </summary>
+        /// <param name="filename">input XML file name, the file has to be in the current directory </param>
+        /// <param name="buildXMLTemplateFile">true to build a xml file with current templates</param>
+        /// <param name="angles">the number of angles, default to 360</param>
+        /// <param name="sized">number of sizes, default to 1</param>
+        /// <returns>List of templates.</returns>
+        public static List<TemplatePyramid> fromFiles(String fileName, bool buildXMLTemplateFile , int angles = 360, int sizes = 1)
         {
             Console.WriteLine("Building templates from files...");
-
+            Gray<byte>[,] ResizedtemplatePic;
             var list = new List<TemplatePyramid>();
 
             string resourceDir = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName, "Resources");
@@ -471,7 +519,7 @@ namespace FastTemplateMatching
                 string tempFile = "TP.bmp";
                 for (int i = 0; i < angles; i++)
                 {
-                    float ImageAngle = (float)i * 360 / totalAngles;
+                    float ImageAngle = (float)i * 360 / angles;
                     float FileRatio = 1;
                     rotateImage(file, ImageAngle, tempFile);
                     for (int j = 0; j < sizes; j++)
@@ -479,8 +527,8 @@ namespace FastTemplateMatching
                         Console.WriteLine("Size # " + j + " angle " + ImageAngle);
                         Gray<byte>[,] preparedBWImage = ImageIO.LoadGray(tempFile).Clone();
                         FileRatio -= (float)0.01;
-                        int width = (int)(preparedBWImage.Width() * CabRatio);
-                        int height = (int)(preparedBWImage.Height() * CabRatio);
+                        int width = (int)(preparedBWImage.Width() * FileRatio);
+                        int height = (int)(preparedBWImage.Height() * FileRatio);
                         if (FileRatio < 0)
                         {
                             Console.WriteLine("Too many sizes to build, Max 100");
@@ -488,7 +536,7 @@ namespace FastTemplateMatching
                             break;
                         }
                         DotImaging.Primitives2D.Size Nsize = new DotImaging.Primitives2D.Size(width, height);
-                        ResiizedtemplatePic = ResizeExtensions_Gray.Resize(preparedBWImage, Nsize, Accord.Extensions.Imaging.InterpolationMode.NearestNeighbor);
+                        ResizedtemplatePic = ResizeExtensions_Gray.Resize(preparedBWImage, Nsize, Accord.Extensions.Imaging.InterpolationMode.NearestNeighbor);
 
                         try
                         {
@@ -500,38 +548,18 @@ namespace FastTemplateMatching
                     }
                 }
 
-                //for (int j = 0; j < totalSizes; j++)
-                //{
-
-                //    string tempFile = file;
-
-                //    tempFile = "TP.bmp";
-                //    string tempRotatedFile = "TPR.bmp";
-                //    ResizeImage(0.6F - (float)j / 10, file, tempFile);
-
-
-                //    for (int i = 0; i < totalAngles; i++)
-                //    {
-                //        float ImageAngle = (float)i * 360 / totalAngles;
-                //        rotateImage(tempFile, ImageAngle, tempRotatedFile);
-                //        Console.WriteLine("Size # " + j + " angle " + ImageAngle);
-                //        Gray<byte>[,] preparedBWImage = ImageIO.LoadGray(tempRotatedFile).Clone();
-                //        try
-                //        {
-                //            var tp = TemplatePyramid.CreatePyramidFromPreparedBWImage(preparedBWImage, new FileInfo(file + "  " + i * 10).Name /*"OpenHand"*/, ImageAngle);
-                //            list.Add(tp);
-                //        }
-                //        catch (Exception)
-                //        { }
-                //    }
-                //}
             }
             if (buildXMLTemplateFile)
                 XMLTemplateSerializer<ImageTemplatePyramid<ImageTemplate>, ImageTemplate>.ToFile(list, Path.Combine(resourceDir, fileName.Substring(0, fileName.IndexOf(".")) + ".xml"));
             return list;
         }
 
-        public List<TemplatePyramid> fromXML(String fileName)
+        /// <summary>
+        /// build template List from a XML file
+        /// </summary>
+        /// <param name="filename">input XML file name, the file has to be in the current directory</param>
+        /// <returns>List of templates.</returns>
+        public static  List<TemplatePyramid> fromXML(String fileName)
         {
             List<TemplatePyramid> list = new List<TemplatePyramid>();
 
@@ -551,13 +579,13 @@ namespace FastTemplateMatching
         /// <param name="labels">the specific label(s) that included in the returned List
         ///                      set to null to find all matches</param>
         /// <returns>List of found matches.</returns>
-        public List<Match> findObjects(Bgr<byte>[,] image, int Threshold = 80, String[] labels = null)
+        public static List<Match> findObjects(Bgr<byte>[,] image, List<TemplatePyramid> templPyrs, int Threshold = 80, String[] labels = null, int minDetectionsPerGroup = 0)
         {
             var grayIm = image.ToGray();
 
             var bestRepresentatives = new List<Match>();
 
-            linPyr = LinearizedMapPyramid.CreatePyramid(grayIm); //prepare linear-pyramid maps
+            LinearizedMapPyramid linPyr  = LinearizedMapPyramid.CreatePyramid(grayIm); //prepare linear-pyramid maps
             List<Match> matches = linPyr.MatchTemplates(templPyrs, Threshold);
 
             var matchGroups = new MatchClustering(minDetectionsPerGroup).Group(matches.ToArray());
@@ -578,7 +606,7 @@ namespace FastTemplateMatching
         /// <param name="labels">the specific label(s) that included in the returned List
         ///                      set to null to find all matches</param>      
         /// <returns>List of found matches.</returns>
-        public List<Match> findObjects(Bgr<byte>[,] image,  out long preprocessTime, out long matchTime, int Threshold = 80, String[] labels = null)
+        public static List<Match> findObjects(Bgr<byte>[,] image, List<TemplatePyramid> templPyrs,  out long preprocessTime, out long matchTime, int Threshold = 80, String[] labels = null, int minDetectionsPerGroup = 0)
         {
             var grayIm = image.ToGray();
 
@@ -587,7 +615,7 @@ namespace FastTemplateMatching
             Stopwatch stopwatch = new Stopwatch();
 
             stopwatch.Start();
-            linPyr = LinearizedMapPyramid.CreatePyramid(grayIm); //prepare linear-pyramid maps
+            LinearizedMapPyramid linPyr = LinearizedMapPyramid.CreatePyramid(grayIm); //prepare linear-pyramid maps
             preprocessTime = stopwatch.ElapsedMilliseconds;
 
             stopwatch.Restart();

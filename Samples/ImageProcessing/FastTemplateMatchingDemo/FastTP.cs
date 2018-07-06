@@ -55,11 +55,14 @@ namespace FastTemplateMatching
         #region User interface...
 
         TemplateMatching TMP;
-
+        List<TemplatePyramid> TemplPyrs = null;
         string fileName;
+
         public FastTP()
         {
             InitializeComponent();
+
+            TemplPyrs = new List<TemplatePyramid>();
 
             TMP = new TemplateMatching();
             
@@ -94,7 +97,7 @@ namespace FastTemplateMatching
         void videoCapture_NewFrame(object sender, EventArgs e)
         {
 
-            TMP.TemplateCapture( videoCapture, this.pictureBox);
+            TMP.TemplateCapture(ref TemplPyrs, videoCapture, this.pictureBox);
 
         }
 
