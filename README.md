@@ -23,6 +23,7 @@ Accord.Extensions.Imaging.AForgeInterop package
 Interoperability extensions between .NET array and AForge's UnmanagedImage.
 
 in order to use the libraries, TYPE in the package manager:
+
     PM> Install-Package Accord.Extensions.Imaging.Algorithms -Version 3.0.1
     PM> Install-Package Accord.Extensions.Math -Version 3.0.1
     PM> Install-Package Accord.Extensions.Imaging.AForgeInterop -Version 3.0.1
