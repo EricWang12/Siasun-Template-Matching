@@ -11,19 +11,19 @@ First use:
 USING THE LIBRARIES: 
 Three of the libraries are included----
 
-#### Image processing
+### Image processing
 
- __Accord.Extensions.Imaging.Algorithms package__      
+* __Accord.Extensions.Imaging.Algorithms package__      
  Implements image processing algorithms as .NET array extensions including the Accord.NET algorithms.
 
-#### Math libraries
+### Math libraries
 
- __Accord.Extensions.Math package__    
+* __Accord.Extensions.Math package__    
   Fluent matrix extensions. Geometry and graph structures and extensions.
 
-#### Support libraries
+### Support libraries
 
- __Accord.Extensions.Imaging.AForgeInterop package__     
+* __Accord.Extensions.Imaging.AForgeInterop package__     
  Interoperability extensions between .NET array and AForge's UnmanagedImage.
 
  
