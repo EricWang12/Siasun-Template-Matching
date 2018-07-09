@@ -224,7 +224,7 @@ namespace Accord.Extensions.Imaging.Algorithms.LINE2D
             var offset = new Point(searchArea.X, searchArea.Y);
             var foundCandidates = createMatches(template, linMaps.NeigborhoodSize, foundMatchPoints, offset, rawScores, rawScoreScale);
 
-            filterPartialShownObjects(ref foundCandidates, linMaps.ImageSize);
+            //filterPartialShownObjects(ref foundCandidates, linMaps.ImageSize);
 
             return foundCandidates;
         }

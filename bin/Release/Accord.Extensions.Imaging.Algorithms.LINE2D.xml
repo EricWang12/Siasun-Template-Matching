@@ -138,7 +138,8 @@
             Creates new LINE2D match clustering object.
             </summary>
             <param name="minGroupWeight">
-            Minimum group weight threshold. Group with less than <paramref name="minGroupWeight"/> will be discarded.
+            Minimum 
+            weight threshold. Group with less than <paramref name="minGroupWeight"/> will be discarded.
             <para>If the all weights are equal to one, the <paramref name="minGroupWeight"/> represents the minimum number of neighbors.</para>
             </param>
             <param name="minMatchAreaOverlap">Minimum bounding rectangle overlap area represented as percentage [0..1].</param>
