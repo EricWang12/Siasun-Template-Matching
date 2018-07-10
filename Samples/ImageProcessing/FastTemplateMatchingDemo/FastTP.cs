@@ -45,7 +45,6 @@ using TemplatePyramid = Accord.Extensions.Imaging.Algorithms.LINE2D.ImageTemplat
 using DotImaging;
 using DotImaging.Primitives2D;
 
-
 namespace FastTemplateMatching
 {
     public partial class FastTP : Form
@@ -56,7 +55,7 @@ namespace FastTemplateMatching
 
         TemplateMatching TMP;
         List<TemplatePyramid> TemplPyrs = null;
-        string fileName;
+        
 
         public FastTP()
         {
@@ -66,10 +65,11 @@ namespace FastTemplateMatching
 
             TMP = new TemplateMatching();
             
-            fileName = "you-win-for-now-.bmp";
+            string [] fileNames = { "you-win-for-now-.bmp", "ha-ha-you-lose.bmp" };
 
-            //TMP.initialize(fileName,80,20,3);
-           
+            TemplateMatching.buildTemplate(fileNames, ref TemplPyrs);
+
+
             try
             {
 #if FILE_CAPTURE
@@ -97,7 +97,7 @@ namespace FastTemplateMatching
         void videoCapture_NewFrame(object sender, EventArgs e)
         {
 
-            TMP.TemplateCapture(ref TemplPyrs, videoCapture, this.pictureBox);
+            TMP.CaptureFrame(TemplPyrs, videoCapture, this.pictureBox);
 
         }
 

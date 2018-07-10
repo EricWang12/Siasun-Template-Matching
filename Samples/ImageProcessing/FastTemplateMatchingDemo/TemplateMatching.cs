@@ -69,9 +69,9 @@ namespace FastTemplateMatching
         /// <summary>
         /// Manually update/build Template
         /// </summary
-        public static  void buildTemplate(string fileName, ref List<TemplatePyramid> templPyrs, bool saveToXml = false)
+        public static void buildTemplate(string[] fileNames, ref List<TemplatePyramid> templPyrs, bool saveToXml = false)
         {
-            templPyrs = fromFiles(fileName, saveToXml);
+            templPyrs = fromFiles(fileNames, saveToXml);
         }
 
         #region build template with Camera---DEMO
@@ -404,7 +404,7 @@ namespace FastTemplateMatching
         }
         #endregion
 
-        #region default methods
+        #region basic methods
 
 
         private static void rotateImage(string inputFile, float angle, string outFile)
@@ -448,8 +448,9 @@ namespace FastTemplateMatching
 
                 try
                 {
+                    int[] maxFeaturesPerLevel = { 200 };
                     TemplatePyramid newTemp = TemplatePyramid.CreatePyramidFromPreparedBWImage(
-                        preparedBWImage, " Template #" + TPindex++, ImageAngle);
+                        preparedBWImage, " Template #" + TPindex++, ImageAngle,maxNumberOfFeaturesPerLevel: maxFeaturesPerLevel);
                     validateFeatures(ref newTemp, image);
                     retList.Add(newTemp);
                 }
@@ -503,14 +504,14 @@ namespace FastTemplateMatching
         /// <param name="angles">the number of angles, default to 360</param>
         /// <param name="sized">number of sizes, default to 1</param>
         /// <returns>List of templates.</returns>
-        public static List<TemplatePyramid> fromFiles(String fileName, bool buildXMLTemplateFile = false, int angles = 360, int sizes = 1)
+        public static List<TemplatePyramid> fromFiles(String[] files, bool buildXMLTemplateFile = false, int angles = 360, int sizes = 1)
         {
             Console.WriteLine("Building templates from files...");
             Gray<byte>[,] ResizedtemplatePic;
             var list = new List<TemplatePyramid>();
 
             string resourceDir = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName, "Resources");
-            string[] files = Directory.GetFiles(resourceDir, fileName);
+            //string[] files = Directory.GetFiles(resourceDir, fileName);
             if (files.Length == 0)
             {
                 throw new Exception("NO FILE FOUND");
@@ -557,7 +558,7 @@ namespace FastTemplateMatching
 
             }
             if (buildXMLTemplateFile)
-                XMLTemplateSerializer<ImageTemplatePyramid<ImageTemplate>, ImageTemplate>.ToFile(list, Path.Combine(resourceDir, fileName.Substring(0, fileName.IndexOf(".")) + ".xml"));
+                XMLTemplateSerializer<ImageTemplatePyramid<ImageTemplate>, ImageTemplate>.ToFile(list, Path.Combine(resourceDir, files[0].Substring(0, files[0].IndexOf(".")) + ".xml"));
             return list;
         }
 

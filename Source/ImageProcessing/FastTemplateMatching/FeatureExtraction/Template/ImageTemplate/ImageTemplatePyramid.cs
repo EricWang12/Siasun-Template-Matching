@@ -53,7 +53,7 @@ namespace Accord.Extensions.Imaging.Algorithms.LINE2D
         /// <summary>
         /// Maximum number of features per pyramid level.
         /// </summary>
-        static int[] DEFAULT_MAX_FEATURES_PER_LEVEL = new int[] { 400 };//, 100 / 2 }; //bigger image towards smaller one   
+        static int[] DEFAULT_MAX_FEATURES_PER_LEVEL = new int[] { 200 };//, 100 / 2 }; //bigger image towards smaller one   
 
         /// <summary>
         /// Gets the image templates. One for each pyramid level.
