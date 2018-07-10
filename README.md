@@ -61,14 +61,14 @@ In the `Basic Methods` section, two main functionalities are implemented:
   ```
   build the templates with an XML that maybe created in the previous stages.
   
-     NOTE: if needed to build __one specific__ template, use:
+    ``` NOTE: if needed to build __one specific__ template, use:
+     
        ```C#
           TemplatePyramid newTemp = TemplatePyramid.CreatePyramidFromPreparedBWImage(
-                        preparedBWImage, " Template #" + TPindex++, ImageAngle, maxNumberOfFeaturesPerLevel: maxFeaturesPerLevel);
-          
+                        preparedBWImage, " Template #" + TPindex++, ImageAngle, maxNumberOfFeaturesPerLevel: maxFeaturesPerLevel);     
           templateList.Add(newTemp);
        ```
-     
+     ```
      
 ### #2 find templates:
 
