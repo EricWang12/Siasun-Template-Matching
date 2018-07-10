@@ -63,11 +63,11 @@ In the `Basic Methods` section, two main functionalities are implemented:
   
     NOTE: if needed to build __one specific__ template, use:
      
-       ```C#
+    ```C#
           TemplatePyramid newTemp = TemplatePyramid.CreatePyramidFromPreparedBWImage(
                         preparedBWImage, " Template #" + TPindex++, ImageAngle, maxNumberOfFeaturesPerLevel: maxFeaturesPerLevel);     
           templateList.Add(newTemp);
-       ```
+    ```
     
      
 ### #2 find templates:
