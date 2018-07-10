@@ -34,6 +34,35 @@ Three of the libraries are included----
     PM> Install-Package Accord.Extensions.Math -Version 3.0.1
     PM> Install-Package Accord.Extensions.Imaging.AForgeInterop -Version 3.0.1
 
+## Basic usage:
+
+In the `Basic Methods` section, two main approach are implemented:
+
+### build templates:
+
+* __build template from a image__
+
+  ```C#
+          public static List<TemplatePyramid> buildTemplate(Gray<byte>[,] image, int Width, int Height, bool buildXMLTemplateFile = false, int angles = 360, int sizes = 1, float minRatio = 0.6f, int[] maxFeaturesPerLevel = null)
+  ```
+  build the template with a specific image
+  
+* __build template from file(s)__
+
+  ```C#
+          public static List<TemplatePyramid> fromFiles(String[] files, bool buildXMLTemplateFile = false, int angles = 360, int sizes = 1, int[] maxFeaturesPerLevel = null)
+  ```
+  build the templates with files in the list
+  
+* __build template from a proper XML file__
+
+  ```C#
+          public static  List<TemplatePyramid> fromXML(String fileName)
+  ```
+  build the templates with an XML that maybe created in the previous stages.
+  
+
+
 
 ## DEMO demonstration:
 
