@@ -61,7 +61,7 @@ In the `Basic Methods` section, two main functionalities are implemented:
   ```
   build the templates with an XML that maybe created in the previous stages.
   
-    NOTE: if needed to build __one specific__ template, use:
+*   NOTE: if needed to build __one specific__ template to the templateList, use:
      
     ```C#
           TemplatePyramid newTemp = TemplatePyramid.CreatePyramidFromPreparedBWImage(
@@ -71,6 +71,14 @@ In the `Basic Methods` section, two main functionalities are implemented:
     
      
 ### #2 find templates:
+
+find the object through the template list with/without a process time measured
+
+```C#
+public static List<Match> findObjects(Bgr<byte>[,] image, List<TemplatePyramid> templPyrs, int Threshold = 80, String[] labels = null, int minDetectionsPerGroup = 0, Func<List<Match>, List<Match>> userFunc = null)
+
+public static List<Match> findObjects(Bgr<byte>[,] image, List<TemplatePyramid> templPyrs,  out long preprocessTime, out long matchTime, int Threshold = 80, String[] labels = null, int minDetectionsPerGroup = 0, Func<List<Match>, List<Match>> userFunc = null)
+```
 
 
 ## DEMO demonstration:
