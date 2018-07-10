@@ -76,7 +76,8 @@ find the object through the template list with/without a process time measured
 
 ```C#
 public static List<Match> findObjects(Bgr<byte>[,] image, List<TemplatePyramid> templPyrs, int Threshold = 80, String[] labels = null, int minDetectionsPerGroup = 0, Func<List<Match>, List<Match>> userFunc = null)
-
+```
+```C#
 public static List<Match> findObjects(Bgr<byte>[,] image, List<TemplatePyramid> templPyrs,  out long preprocessTime, out long matchTime, int Threshold = 80, String[] labels = null, int minDetectionsPerGroup = 0, Func<List<Match>, List<Match>> userFunc = null)
 ```
 
