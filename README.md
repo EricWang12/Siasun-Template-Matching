@@ -36,9 +36,9 @@ Three of the libraries are included----
 
 ## Basic usage:
 
-In the `Basic Methods` section, two main approach are implemented:
+In the `Basic Methods` section, two main functionalities are implemented:
 
-### build templates:
+### #1 build templates:
 
 * __build template from a image__
 
@@ -61,7 +61,16 @@ In the `Basic Methods` section, two main approach are implemented:
   ```
   build the templates with an XML that maybe created in the previous stages.
   
-
+     NOTE: if needed to build __one specific__ template, use:
+       ```C#
+          TemplatePyramid newTemp = TemplatePyramid.CreatePyramidFromPreparedBWImage(
+                        preparedBWImage, " Template #" + TPindex++, ImageAngle, maxNumberOfFeaturesPerLevel: maxFeaturesPerLevel);
+          
+          templateList.Add(newTemp);
+       ```
+     
+     
+### #2 find templates:
 
 
 ## DEMO demonstration:
