@@ -67,7 +67,7 @@ namespace FastTemplateMatching
             
             string [] fileNames = { "you-win-for-now-.bmp", "ha-ha-you-lose.bmp" };
 
-            TemplateMatching.buildTemplate(fileNames, ref TemplPyrs);
+            //TemplateMatching.buildTemplate(fileNames, ref TemplPyrs);
 
 
             try
@@ -97,7 +97,7 @@ namespace FastTemplateMatching
         void videoCapture_NewFrame(object sender, EventArgs e)
         {
 
-            TMP.CaptureFrame(TemplPyrs, videoCapture, this.pictureBox);
+            TMP.TemplateCapture(ref TemplPyrs, videoCapture, this.pictureBox);
 
         }
 

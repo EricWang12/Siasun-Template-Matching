@@ -191,7 +191,7 @@ namespace Accord.Extensions.Imaging.Algorithms.LINE2D
         //make sure that each feature is far enough from each other
         private static List<Feature> FilterScatteredFeatures(List<Feature> candidates, int maxNumOfFeatures, int minDistance)
         {
-            int distance = 30;
+            int distance = 10000/ maxNumOfFeatures;
             int nearest_of_most_isolated = 0, nearest = Int32.MaxValue;
             Feature most_isolated = null;
             maxNumOfFeatures = System.Math.Min(maxNumOfFeatures, candidates.Count);
