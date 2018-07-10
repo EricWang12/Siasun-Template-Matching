@@ -61,13 +61,13 @@ In the `Basic Methods` section, two main functionalities are implemented:
   ```
   build the templates with an XML that maybe created in the previous stages.
   
- -  *NOTE: if needed to build __one specific__ template to the templateList, use:*
+*NOTE: if needed to build __one specific__ template to the templateList, use:*
      
-    ```C#
+ ```C#
           TemplatePyramid newTemp = TemplatePyramid.CreatePyramidFromPreparedBWImage(
-                        preparedBWImage, " Template #" + TPindex++, ImageAngle, maxNumberOfFeaturesPerLevel: maxFeaturesPerLevel);     
+                        preparedBWImage, templateName, ImageAngle, maxNumberOfFeaturesPerLevel: maxFeaturesPerLevel);     
           templateList.Add(newTemp);
-    ```
+ ```
     
      
 ### #2 find templates:
@@ -101,5 +101,9 @@ AFTER PRESSING THE BUTTON:
 
 
 the system build a template based on this frame and adjust it to fit the framework and display the features (of templates) superimposed on the frame work 
+
+Then the program will ask you to confirm the template, after making sure that no blue dot is in between two circles, press yes then it would start building the templates in different angles and sizes (only 1 size is used in the demo)
+
+Then if there is no intent to build another template, confirm the process and the program would go to the last state in which it would continuously find the template in the frame captured by the camera and output `name, size, angle, X, Y ` of any found object.
 
     TO BE UPDATED
