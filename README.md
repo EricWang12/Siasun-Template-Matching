@@ -54,6 +54,12 @@ In the `Basic Methods` section, two main functionalities are implemented:
   ```
   build the templates with files in the list
   
+  **OR simpler:**
+  
+  ```C#
+   public static void buildTemplate(string[] fileNames, ref List<TemplatePyramid> templPyrs, bool saveToXml = false)
+   ```
+  
 * __build template from a proper XML file__
 
   ```C#
