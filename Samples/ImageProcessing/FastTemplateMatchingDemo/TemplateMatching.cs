@@ -185,10 +185,10 @@ namespace FastTemplateMatching
         /// <param name="pictureBox">the picture box of window form</param>
         /// <param name="minRatio">The ratio of smallest size to original, default to 0.4</param>
         /// /// <returns>nothing.</returns>
-        public void TemplateCapture(string name, ref List<TemplatePyramid> templPyrs, ImageStreamReader videoCapture, PictureBox pictureBox, float minRatio = 0.4f)
+        public void TemplateCapture(string name, ref List<TemplatePyramid> templPyrs, ImageStreamReader videoCapture, PictureBox pictureBox, float minCalibrationRatio = 0.4f)
         {
             
-            if (name == null) name = " Template";
+            if (name == null) name = "Template";
             
 #if runXML
             try
@@ -216,6 +216,7 @@ namespace FastTemplateMatching
                     drawFrameWork(frame);
 
                     pictureBox.Image = frame.ToBitmap(); //it will be just casted (data is shared) 24bpp color
+                    GC.Collect();
                     break;
                 case State.BuildingTemplate:
                     Console.WriteLine("building template");
@@ -253,7 +254,7 @@ namespace FastTemplateMatching
                         CabRatio -= (float)0.01;
                         int width = (int)(templatePic.Width() * CabRatio);
                         int height = (int)(templatePic.Height() * CabRatio);
-                        if(CabRatio < minRatio)
+                        if(CabRatio < minCalibrationRatio)
                         {
                             Console.WriteLine("Calibration failed");
                             CabRatio = 1;
@@ -309,7 +310,7 @@ namespace FastTemplateMatching
                     break;
                 case State.Rotate:
                     int SqrSide = (int)(frame.Height() / Math.Sqrt(2));
-                    rotateLoad(templPyrs, ResiizedtemplatePic, totalAngles ,SqrSide,SqrSide,false, userFunc: validateFeatures);
+                    rotateLoad(templPyrs, ResiizedtemplatePic, totalAngles ,SqrSide,SqrSide,true, userFunc: validateFeatures);
 
                     Cap = State.ConfirmDone;
                     break;
@@ -436,7 +437,7 @@ namespace FastTemplateMatching
         /// <param name="maxFeaturesPerLevel">the array of maximum features per pyrimid level, default to 200 in DEFAULT_MAX_FEATURES_PER_LEVEL from ImageTemplatePyramid.cs:56,
         ///                                     increase to increase the precision in expense of detection time-delay</param>
         /// <returns>nothing.</returns>
-        private static void rotateLoad(List<TemplatePyramid> retList, Gray<byte>[,] image, int angles, int Width, int Height, bool buildXMLTemplateFile = false, int[] maxFeaturesPerLevel = null, Func<TemplatePyramid, Gray<byte>[,], TemplatePyramid> userFunc = null)
+        public static void rotateLoad(List<TemplatePyramid> retList, Gray<byte>[,] image, int angles, int Width, int Height, bool buildXMLTemplateFile = false, int[] maxFeaturesPerLevel = null, Func<TemplatePyramid, Gray<byte>[,], TemplatePyramid> userFunc = null)
         {
 
             string resourceDir = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName, "Resources");
