@@ -54,6 +54,12 @@ In the `Basic Methods` section, two main functionalities are implemented:
   ```
   build the templates with files in the list
   
+  **OR simpler:**
+  
+  ```C#
+   public static void buildTemplate(string[] fileNames, ref List<TemplatePyramid> templPyrs, bool saveToXml = false)
+   ```
+  
 * __build template from a proper XML file__
 
   ```C#
@@ -82,7 +88,7 @@ public static List<Match> findObjects(Bgr<byte>[,] image, List<TemplatePyramid> 
 ```
 
 
-## DEMO demonstration:
+## DEMO:
 
 For now it's a demo which is basically a state machine :
 INIT -> BUILD TEMPLATE -> CALIBRATE THE TEMPLATE IMAGE -> ROTATE TO GET TEMPLATE IN DIFFERENT ANGLES -> DONE
@@ -106,5 +112,10 @@ the system build a template based on this frame and adjust it to fit the framewo
 Then the program will ask you to confirm the template, after making sure that no blue dot is in between two circles, press yes then it would start building the templates in different angles and sizes (only 1 size is used in the demo)
 
 Then if there is no intent to build another template, confirm the process and the program would go to the last state in which it would continuously find the template in the frame captured by the camera and output `name, size, angle, X, Y ` of any found object.
+
+Multi-Template scanned simultaneously :
+
+![multi-template](https://user-images.githubusercontent.com/22462126/42547047-a965a6ca-84f2-11e8-8226-9e23845176a8.PNG)
+
 
     TO BE UPDATED
