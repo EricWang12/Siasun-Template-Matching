@@ -67,8 +67,8 @@ namespace FastTemplateMatching
             
             string [] fileNames = { "you-win-for-now-.bmp", "ha-ha-you-lose.bmp" };
 
-            //TemplateMatching.buildTemplate(fileNames, ref TemplPyrs);
-            TemplPyrs = TemplateMatching.fromXML("Template.xml");
+            //TemplPyrs = TemplateMatching.fromFiles(fileNames, true,1);
+            //TemplPyrs = TemplateMatching.fromXML("you-win-for-now-.xmll");
 
             try
             {
@@ -97,7 +97,7 @@ namespace FastTemplateMatching
         void videoCapture_NewFrame(object sender, EventArgs e)
         {
 
-            TMP.CaptureFrame(TemplPyrs, videoCapture, this.pictureBox);
+            TMP.TemplateCapture(ref TemplPyrs, videoCapture, this.pictureBox);
 
         }
 

@@ -39,10 +39,10 @@ namespace Accord.Extensions.Imaging.Algorithms.LINE2D
     public class ImageTemplatePyramid<T>: ITemplatePyramid, ITemplatePyramid<T>
         where T: ImageTemplate, new()
     {
-        /// <summary>
-        ///number of features per pyramid level.
-        /// </summary>
-        public const int PYRLEVEL = 0;
+        ///// <summary>
+        /////number of features per pyramid level.
+        ///// </summary>
+        //public const int PYRLEVEL = 0;
         /*
         /// <summary>
         /// Minimum number of features per template.
@@ -53,7 +53,7 @@ namespace Accord.Extensions.Imaging.Algorithms.LINE2D
         /// <summary>
         /// Maximum number of features per pyramid level.
         /// </summary>
-        static int[] DEFAULT_MAX_FEATURES_PER_LEVEL = new int[] { 200 };//, 100 / 2 }; //bigger image towards smaller one   
+        static int[] DEFAULT_MAX_FEATURES_PER_LEVEL = new int[] { 200 };// , 100 , 50 }; //bigger image towards smaller one   
 
         /// <summary>
         /// Gets the image templates. One for each pyramid level.
@@ -130,7 +130,7 @@ namespace Accord.Extensions.Imaging.Algorithms.LINE2D
             var image = sourceImage;
 
             bool isValid = true;
-            for (int pyrLevel = PYRLEVEL; pyrLevel < nPyramids; pyrLevel++)
+            for (int pyrLevel = 0; pyrLevel < nPyramids; pyrLevel++)
             {
                 if (pyrLevel > 0)
                     image = image.PyrDown();

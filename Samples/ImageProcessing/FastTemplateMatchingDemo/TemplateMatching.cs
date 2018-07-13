@@ -1,5 +1,4 @@
-﻿//#define FILE_CAPTURE //comment it to enable camera capture
-#define READFILE
+﻿#define READFILE
 //#define AUTOINIT        // auto init detects if there is a existing xml file and read it, (build it if not)
 //#define runXML
 
@@ -25,9 +24,9 @@ using Accord.Math;
 
 namespace FastTemplateMatching
 {
-    public class TemplateMatching 
+    public class TemplateMatching
     {
-
+        
         public List<TemplatePyramid> LocaltemplPyrs = null;
 
         private LinearizedMapPyramid linPyr = null;
@@ -404,7 +403,7 @@ namespace FastTemplateMatching
             pictureBox.Image = frame.ToBitmap(); //it will be just casted (data is shared) 24bpp color
 
             //frame.Save(String.Format("C:/probaImages/imgMarked_{0}.jpg", i)); b.Save(String.Format("C:/probaImages/img_{0}.jpg", i)); i++;
-            GC.Collect();
+            //GC.Collect();
         }
     #endregion
 
@@ -614,6 +613,7 @@ namespace FastTemplateMatching
 
             userFunc = ( userFunc != null) ? userFunc : (inputList)=> inputList;
             LinearizedMapPyramid linPyr  = LinearizedMapPyramid.CreatePyramid(grayIm); //prepare linear-pyramid maps
+            
             List<Match> matches = linPyr.MatchTemplates(templPyrs, Threshold);
 
             var matchGroups = new MatchClustering(minDetectionsPerGroup).Group(matches.ToArray());

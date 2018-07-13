@@ -706,11 +706,6 @@
             </summary>
             <typeparam name="T"></typeparam>
         </member>
-        <member name="F:Accord.Extensions.Imaging.Algorithms.LINE2D.ImageTemplatePyramid`1.PYRLEVEL">
-             <summary>
-            number of features per pyramid level.
-             </summary>
-        </member>
         <member name="F:Accord.Extensions.Imaging.Algorithms.LINE2D.ImageTemplatePyramid`1.DEFAULT_MAX_FEATURES_PER_LEVEL">
             <summary>
             Maximum number of features per pyramid level.

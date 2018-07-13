@@ -38,6 +38,7 @@ namespace Accord.Extensions.Imaging.Algorithms.LINE2D
     /// </summary>
     public static unsafe class LinearizedMemoryDetectorExtensions
     {
+        static int index = 0;
         #region TemplatePyrmaid matching (public)
 
         /// <summary>
@@ -49,7 +50,7 @@ namespace Accord.Extensions.Imaging.Algorithms.LINE2D
         /// <param name="inParallel">True to match each template pyramid in parallel, sequentially otherwise.</param>
         /// <returns>List of found matches.</returns>
         public static List<Match> MatchTemplates(this LinearizedMapPyramid linPyr, IEnumerable<ITemplatePyramid> templPyrs, int minMatchingPercentage = 85, bool inParallel = true)
-        {
+        { 
             List<Match> matches = new List<Match>();
 
             if (inParallel)
@@ -59,7 +60,10 @@ namespace Accord.Extensions.Imaging.Algorithms.LINE2D
                 Parallel.ForEach(templPyrs, (templPyr) => 
                 {
                     List<Match> templateMatches = MatchTemplate(linPyr, templPyr, minMatchingPercentage);
-                    lock (syncObj) matches.AddRange(templateMatches);
+                    lock (syncObj) {
+                        matches.AddRange(templateMatches);
+                        index++;
+                    }
                 });
             }
             else
@@ -104,7 +108,7 @@ namespace Accord.Extensions.Imaging.Algorithms.LINE2D
 
                 int previousNeigborhood = linPyr.PyramidalMaps[pyrLevel + 1].NeigborhoodSize;
 
-                for (int candidateIdx = 0; candidateIdx < pyrMatches[pyrLevel+1].Count; candidateIdx++) //for every candidate of previous pyramid level...
+                for (int candidateIdx = 0; candidateIdx < pyrMatches[pyrLevel + 1].Count; candidateIdx++) //for every candidate of previous pyramid level...
                 {
                     //translate match to lower pyrmaid level
                     Match canidate = pyrMatches[pyrLevel + 1][candidateIdx];
@@ -117,7 +121,7 @@ namespace Accord.Extensions.Imaging.Algorithms.LINE2D
                     {
                         X = System.Math.Max(0, canidate.X - previousNeigborhood),
                         Y = System.Math.Max(0, canidate.Y - previousNeigborhood),
-                        Width = previousNeigborhood * 2, 
+                        Width = previousNeigborhood * 2,
                         Height = previousNeigborhood * 2
                     };
                     searchArea = searchArea.Intersect(imageValidSize);
@@ -224,7 +228,7 @@ namespace Accord.Extensions.Imaging.Algorithms.LINE2D
             var offset = new Point(searchArea.X, searchArea.Y);
             var foundCandidates = createMatches(template, linMaps.NeigborhoodSize, foundMatchPoints, offset, rawScores, rawScoreScale);
 
-            //filterPartialShownObjects(ref foundCandidates, linMaps.ImageSize);
+            filterPartialShownObjects(ref foundCandidates, linMaps.ImageSize);
 
             return foundCandidates;
         }
