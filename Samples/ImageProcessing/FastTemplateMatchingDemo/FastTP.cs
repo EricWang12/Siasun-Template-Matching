@@ -64,10 +64,10 @@ namespace FastTemplateMatching
             TemplPyrs = new List<TemplatePyramid>();
 
             TMP = new TemplateMatching();
-            
-            string [] fileNames = { "you-win-for-now-.bmp", "ha-ha-you-lose.bmp" };
 
-            //TemplPyrs = TemplateMatching.fromFiles(fileNames, true,1);
+            string[] fileNames = {  "TP-A.bmp" , "ha-ha-you-lose.bmp" };
+
+            TemplPyrs = TemplateMatching.fromFiles(fileNames, true,CropToSqr:true);
             //TemplPyrs = TemplateMatching.fromXML("you-win-for-now-.xmll");
 
             try
@@ -97,7 +97,7 @@ namespace FastTemplateMatching
         void videoCapture_NewFrame(object sender, EventArgs e)
         {
 
-            TMP.TemplateCapture(ref TemplPyrs, videoCapture, this.pictureBox);
+            TMP.CaptureFrame( TemplPyrs, videoCapture, this.pictureBox);
 
         }
 

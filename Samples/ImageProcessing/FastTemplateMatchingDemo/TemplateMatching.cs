@@ -66,7 +66,7 @@ namespace FastTemplateMatching
             
 //        }
 
-
+        
         /// <summary>
         /// Manually update/build Template
         /// </summary
@@ -152,7 +152,7 @@ namespace FastTemplateMatching
         float CabRatio = 1;
 
         int totalAngles = 360;
-        int totalSizes = 1;
+        int totalSizes = 6;
 
         Gray<byte>[,] ResiizedtemplatePic, templatePic;
         private State Cap = State.Init;
@@ -184,7 +184,7 @@ namespace FastTemplateMatching
         /// <param name="pictureBox">the picture box of window form</param>
         /// <param name="minRatio">The ratio of smallest size to original, default to 0.4</param>
         /// /// <returns>nothing.</returns>
-        public void TemplateCapture(string name, ref List<TemplatePyramid> templPyrs, ImageStreamReader videoCapture, PictureBox pictureBox, float minCalibrationRatio = 0.4f)
+        public void TemplateCapture( ref List<TemplatePyramid> templPyrs, ImageStreamReader videoCapture, PictureBox pictureBox,string name = null, float minCalibrationRatio = 0.4f)
         {
             
             if (name == null) name = "Template";
@@ -309,7 +309,9 @@ namespace FastTemplateMatching
                     break;
                 case State.Rotate:
                     int SqrSide = (int)(frame.Height() / Math.Sqrt(2));
-                    rotateLoad(templPyrs, ResiizedtemplatePic, totalAngles ,SqrSide,SqrSide,true, userFunc: validateFeatures);
+                    templPyrs.AddRange(buildTemplate(ResiizedtemplatePic, SqrSide, SqrSide, false, totalAngles, totalSizes, 0.5f, null, validateFeatures));
+                        //ResiizedtemplatePic, totalAngles, SqrSide, SqrSide, true, userFunc: validateFeatures));
+                   
 
                     Cap = State.ConfirmDone;
                     break;
@@ -342,24 +344,6 @@ namespace FastTemplateMatching
         }
        
         /// <summary>
-        /// Build template with the cemara
-        /// 
-        /// State Machine---->
-        /// int -> build template -> resize to find the best -> draw the template then comfirm by user ->
-        /// rotate for angles ->done and return
-        /// 
-        /// make sure the object is in green circle
-        /// </summary>
-        /// <param name="templPyrs">the template list that to be used</param
-        /// <param name="videoCapture">the video stream</param>
-        /// <param name="pictureBox">the picture box of window form</param>
-        /// /// <returns>nothing.</returns>
-        public void TemplateCapture(ref List<TemplatePyramid> templPyrs, ImageStreamReader videoCapture, PictureBox pictureBox)
-        {
-            TemplateCapture(null,ref templPyrs, videoCapture, pictureBox);
-        }
-
-        /// <summary>
         /// (use for the button:) start capture the template from init state
         /// </summary>
         public void TPCapture()
@@ -385,7 +369,7 @@ namespace FastTemplateMatching
                 return;
 
             long preprocessTime, matchTime;
-            var bestRepresentatives = findObjects(frame, templPyrs, out preprocessTime, out matchTime);
+            var bestRepresentatives = findObjects(frame, templPyrs, out preprocessTime, out matchTime,68);
 
             /************************************ drawing ****************************************/
             foreach (var m in bestRepresentatives)
@@ -425,7 +409,7 @@ namespace FastTemplateMatching
         }
 
         /// <summary>
-        /// rotate the image for <param name="angles"> angles and load them into the <param name="retList"> List.
+        /// rotate the image for  <param name="angles"> angles and load them into the <param name="retList"> List.
         /// </summary>
         /// <param name="retList">the list that mean to be loaded with the new templates, create a new one if null is passed in</param>
         /// <param name="image">input image</param>       
@@ -435,15 +419,16 @@ namespace FastTemplateMatching
         /// <param name="buildXMLTemplateFile">true to build a xml file with current templates</param>
         /// <param name="maxFeaturesPerLevel">the array of maximum features per pyrimid level, default to 200 in DEFAULT_MAX_FEATURES_PER_LEVEL from ImageTemplatePyramid.cs:56,
         ///                                     increase to increase the precision in expense of detection time-delay</param>
+        /// <param name="userFunc">Input User Function for customization and diversity</param>
         /// <returns>nothing.</returns>
-        public static void rotateLoad(List<TemplatePyramid> retList, Gray<byte>[,] image, int angles, int Width, int Height, bool buildXMLTemplateFile = false, int[] maxFeaturesPerLevel = null, Func<TemplatePyramid, Gray<byte>[,], TemplatePyramid> userFunc = null)
+        private static void rotateLoad(List<TemplatePyramid> retList, Gray<byte>[,] image, int angles, int Width, int Height, bool buildXMLTemplateFile = false, int[] maxFeaturesPerLevel = null, Func<TemplatePyramid, Gray<byte>[,], TemplatePyramid> userFunc = null)
         {
 
             string resourceDir = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName, "Resources");
             retList = (retList == null ? new List<TemplatePyramid>() : retList);
             Width =(Width > image.Width() ? image.Width() : Width);
             Height = (Height > image.Height() ? image.Height() : Height);
-            userFunc = (userFunc != null) ? userFunc : (inputList, inputImage) => inputList;
+            //userFunc = (userFunc != null) ? userFunc : (inputList, inputImage) => inputList;
 
             for (int i = 0; i < angles; i++)
             {
@@ -460,14 +445,12 @@ namespace FastTemplateMatching
                 returnBitmap.Save("TP.bmp");
                 Console.WriteLine(" angle " + ImageAngle);
                 Gray<byte>[,] preparedBWImage = ImageIO.LoadGray("TP.bmp").Clone();
-
-                // Accord.Extensions.Imaging.
-
+                
                 try
                 {
                     TemplatePyramid newTemp = TemplatePyramid.CreatePyramidFromPreparedBWImage(
                         preparedBWImage, " Template #" + TPindex++, ImageAngle, maxNumberOfFeaturesPerLevel: maxFeaturesPerLevel);
-                    newTemp = userFunc(newTemp, image);
+                    if (userFunc != null)newTemp = userFunc(newTemp, image);
                     retList.Add(newTemp);
                 }
                 catch (Exception)
@@ -488,8 +471,9 @@ namespace FastTemplateMatching
         /// <param name="minRatio">The ratio of smallest size to original, default to 0.6</param>
         /// <param name="maxFeaturesPerLevel">the array of maximum features per pyrimid level, default to 200 in DEFAULT_MAX_FEATURES_PER_LEVEL from ImageTemplatePyramid.cs:56,
         ///                                     increase to increase the precision in expense of detection time-delay</param>
+        /// <param name="userFunc">Input User Function for customization and diversity</param>
         /// <returns>List of templates.</returns>
-        public static List<TemplatePyramid> buildTemplate(Gray<byte>[,] image, int Width, int Height, bool buildXMLTemplateFile = false, int angles = 360, int sizes = 1, float minRatio = 0.6f, int[] maxFeaturesPerLevel = null)
+        public static List<TemplatePyramid> buildTemplate(Gray<byte>[,] image, int Width, int Height, bool buildXMLTemplateFile = false, int angles = 360, int sizes = 1, float minRatio = 0.6f, int[] maxFeaturesPerLevel = null, Func<TemplatePyramid, Gray<byte>[,], TemplatePyramid> userFunc = null)
         {
             List<TemplatePyramid> retList = new List<TemplatePyramid>();
             float Ratio = 1;
@@ -504,7 +488,7 @@ namespace FastTemplateMatching
                 DotImaging.Primitives2D.Size Nsize = new DotImaging.Primitives2D.Size(width, height);
                 tempIMG = ResizeExtensions_Gray.Resize(image, Nsize, Accord.Extensions.Imaging.InterpolationMode.NearestNeighbor);
 
-                rotateLoad(retList, tempIMG, angles, Width, Height, false, maxFeaturesPerLevel, userFunc: validateFeatures);
+                rotateLoad(retList, tempIMG, angles, Width, Height, false, maxFeaturesPerLevel, userFunc: userFunc);
             }
             if (buildXMLTemplateFile)
                 XMLTemplateSerializer<ImageTemplatePyramid<ImageTemplate>, ImageTemplate>.ToFile(retList, 
@@ -520,11 +504,13 @@ namespace FastTemplateMatching
         /// <param name="filename">input XML file name, the file has to be in the current directory </param>
         /// <param name="buildXMLTemplateFile">true to build a xml file with current templates</param>
         /// <param name="angles">the number of angles, default to 360</param>
-        /// <param name="sized">number of sizes, default to 1</param>
+        /// <param name="sizes">number of sizes, default to 1</param>
+        /// <param name="CropToSqr">decides whether to crop the image to sqrside to prevent edges issues</param>
         /// <param name="maxFeaturesPerLevel">the array of maximum features per pyrimid level, default (null) would evaluate to 200 in DEFAULT_MAX_FEATURES_PER_LEVEL from ImageTemplatePyramid.cs:56,
         ///                                     increase to increase the precision in expense of detection time-delay</param>
+        /// <param name="userFunc">Input User Function for customization and diversity</param>
         /// <returns>List of templates.</returns>
-        public static List<TemplatePyramid> fromFiles(String[] files, bool buildXMLTemplateFile = false, int angles = 360, int sizes = 1, int[] maxFeaturesPerLevel = null)
+        public static List<TemplatePyramid> fromFiles(String[] files, bool buildXMLTemplateFile = false, int angles = 360, int sizes = 1, bool CropToSqr = false, int[] maxFeaturesPerLevel = null, Func<TemplatePyramid, Gray<byte>[,], TemplatePyramid> userFunc = null)
         {
             Console.WriteLine("Building templates from files...");
             Gray<byte>[,] ResizedtemplatePic;
@@ -539,42 +525,61 @@ namespace FastTemplateMatching
             object syncObj = new object();
             //int fileNum = 0;
             //Parallel.ForEach(files, delegate (string file)
-           
+
 
             foreach (var file in files)
             {
 
-                string tempFile = "TP.bmp";
-                for (int i = 0; i < angles; i++)
-                {
-                    float ImageAngle = (float)i * 360 / angles;
-                    float FileRatio = 1;
-                    rotateImage(file, ImageAngle, tempFile);
-                    for (int j = 0; j < sizes; j++)
-                    {
-                        Console.WriteLine("Size # " + j + " angle " + ImageAngle);
-                        Gray<byte>[,] preparedBWImage = ImageIO.LoadGray(tempFile).Clone();
-                        FileRatio -= (float)0.01;
-                        int width = (int)(preparedBWImage.Width() * FileRatio);
-                        int height = (int)(preparedBWImage.Height() * FileRatio);
-                        if (FileRatio < 0)
-                        {
-                            Console.WriteLine("Too many sizes to build, Max 100");
-                            FileRatio = 1;
-                            break;
-                        }
-                        DotImaging.Primitives2D.Size Nsize = new DotImaging.Primitives2D.Size(width, height);
-                        ResizedtemplatePic = ResizeExtensions_Gray.Resize(preparedBWImage, Nsize, Accord.Extensions.Imaging.InterpolationMode.NearestNeighbor);
+                //string tempFile = "TP.bmp";
+                //for (int i = 0; i < angles; i++)
+                //{
+                //    float ImageAngle = (float)i * 360 / angles;
 
-                        try
-                        {
-                            var tp = TemplatePyramid.CreatePyramidFromPreparedBWImage(preparedBWImage, new FileInfo(file + "  " + i * 10).Name, ImageAngle, maxNumberOfFeaturesPerLevel: maxFeaturesPerLevel);
-                            list.Add(tp);
-                        }
-                        catch (Exception)
-                        { }
+                //    rotateImage(file, ImageAngle, tempFile);
+
+                int shortSide, SqrSide,inputWidth, inputHeight;
+                float FileRatio = 1;
+                Gray<byte>[,] preparedBWImage;
+                for (int j = 0; j < sizes; j++)
+                {
+                    Console.WriteLine("Size # " + j);// + " angle " + ImageAngle);
+                    try
+                    {
+                       preparedBWImage = ImageIO.LoadGray(file).Clone();
                     }
+                    catch
+                    {
+                        Console.WriteLine("Error occurs when loading " + file);
+                        continue;
+                    }
+                    
+                    FileRatio -= (float)0.01;
+                    int width = (int)(preparedBWImage.Width() * FileRatio);
+                    int height = (int)(preparedBWImage.Height() * FileRatio);
+                    if (FileRatio < 0)
+                    {
+                        Console.WriteLine("Too many sizes to build, Max 100");
+                        FileRatio = 1;
+                        break;
+                    }
+                    DotImaging.Primitives2D.Size Nsize = new DotImaging.Primitives2D.Size(width, height);
+                    ResizedtemplatePic = ResizeExtensions_Gray.Resize(preparedBWImage, Nsize, Accord.Extensions.Imaging.InterpolationMode.NearestNeighbor);
+
+                    try
+                    {
+                        //var tp = TemplatePyramid.CreatePyramidFromPreparedBWImage(preparedBWImage, new FileInfo(file + "  " + i * 10).Name, ImageAngle, maxNumberOfFeaturesPerLevel: maxFeaturesPerLevel);
+                        shortSide = (preparedBWImage.Width() < preparedBWImage.Height()) ? preparedBWImage.Width() : preparedBWImage.Height();
+                        SqrSide = (int)(shortSide / Math.Sqrt(2));
+                        inputWidth = CropToSqr ? SqrSide : preparedBWImage.Width();
+                        inputHeight = CropToSqr ? SqrSide : preparedBWImage.Height();
+
+
+                        rotateLoad(list, preparedBWImage, angles, inputWidth, inputHeight, false, maxFeaturesPerLevel, userFunc);
+                    }
+                    catch (Exception)
+                    { }
                 }
+                //}
 
             }
             if (buildXMLTemplateFile)
@@ -602,9 +607,11 @@ namespace FastTemplateMatching
         /// find the matches in the given image.  
         /// </summary>
         /// <param name="image">input image.</param>
+        /// <param name="templPyrs">input template list.</param>
         /// <param name="Threshold">the threshold for the matching algor.</param>
         /// <param name="labels">the specific label(s) that included in the returned List
         ///                      set to null to find all matches</param>
+        /// <param name="userFunc">Input User Function for customization and diversity</param>
         /// <returns>List of found matches.</returns>
         public static List<Match> findObjects(Bgr<byte>[,] image, List<TemplatePyramid> templPyrs, int Threshold = 80, String[] labels = null, int minDetectionsPerGroup = 0, Func<List<Match>, List<Match>> userFunc = null)
         {
@@ -631,10 +638,14 @@ namespace FastTemplateMatching
         /// <summary>
         ///  find the matches in the given image with stopwatch included.  
         /// </summary>
-        /// <param name="image">input image.</param>
+        /// <param name="image">input image.</param>       
+        /// <param name="templPyrs">input template list.</param
+        /// <param name="preprocessTime">Time for preprocessing .</param>
+        /// <param name="matchTime">The time it takes to find matches</param>
         /// <param name="Threshold">the threshold for the matching algor.</param>
         /// <param name="labels">the specific label(s) that included in the returned List
-        ///                      set to null to find all matches</param>      
+        ///                      set to null to find all matches</param>    
+        /// <param name="userFunc">Input User Function for customization and diversity</param>  
         /// <returns>List of found matches.</returns>
         public static List<Match> findObjects(Bgr<byte>[,] image, List<TemplatePyramid> templPyrs,  out long preprocessTime, out long matchTime, int Threshold = 80, String[] labels = null, int minDetectionsPerGroup = 0, Func<List<Match>, List<Match>> userFunc = null)
         {
