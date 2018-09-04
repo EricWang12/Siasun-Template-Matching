@@ -12,7 +12,8 @@ C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\bin\Release\Accord.Exte
 C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\bin\Release\Accord.Extensions.Imaging.Algorithms.XML
 C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\bin\Release\Accord.Extensions.Imaging.Algorithms.dll
 C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\bin\Release\Accord.Extensions.Imaging.Algorithms.pdb
-C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\Source\ImageProcessing\Imaging.Algorithms\obj\Release\Imaging.Algorithms.csprojResolveAssemblyReference.cache
 C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\Source\ImageProcessing\Imaging.Algorithms\obj\Release\Imaging.Algorithms.csproj.CoreCompileInputs.cache
 C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\Source\ImageProcessing\Imaging.Algorithms\obj\Release\Accord.Extensions.Imaging.Algorithms.dll
 C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\Source\ImageProcessing\Imaging.Algorithms\obj\Release\Accord.Extensions.Imaging.Algorithms.pdb
+C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\Source\ImageProcessing\Imaging.Algorithms\obj\Release\Imaging.Algorithms.csprojAssemblyReference.cache
+C:\Users\wzner\Workspace\SiaSun\Siasun-Template-Matching\Source\ImageProcessing\Imaging.Algorithms\obj\Release\Imaging.Algorithms.csproj.CopyComplete

@@ -156,7 +156,7 @@ namespace Accord.Extensions.Imaging.Algorithms.LINE2D
             this.ClassLabel = classLabel;
             this.Angle = angle;
         }
-
+        // orientationImg is the [0..128]
         private static List<Feature> ExtractTemplate(Gray<byte>[,] orientationImage, int maxNumOfFeatures, Func<Feature, int> featureImportanceFunc)
         {
             List<Feature> candidates = new List<Feature>();

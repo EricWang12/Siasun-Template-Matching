@@ -160,6 +160,7 @@ namespace Accord.Extensions.Imaging.Algorithms.LINE2D
                             histogram[qOrinetUnfilteredPtr[+qOrinetStride - 1]]++; histogram[qOrinetUnfilteredPtr[+qOrinetStride + 0]]++; histogram[qOrinetUnfilteredPtr[+qOrinetStride + 1]]++;
 
                             int maxBinVotes = 0; byte quantizedAngle = 0;
+                            // find the max direction in the 3x3 box
                             for (byte histBinIdx = 0; histBinIdx < GlobalParameters.NUM_OF_QUNATIZED_ORIENTATIONS /*discard invalid orientation*/; histBinIdx++)
                             {
                                 if (histogram[histBinIdx] > maxBinVotes)

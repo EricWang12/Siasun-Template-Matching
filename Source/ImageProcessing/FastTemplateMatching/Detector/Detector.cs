@@ -62,7 +62,7 @@ namespace Accord.Extensions.Imaging.Algorithms.LINE2D
                     List<Match> templateMatches = MatchTemplate(linPyr, templPyr, minMatchingPercentage);
                     lock (syncObj) {
                         matches.AddRange(templateMatches);
-                        index++;
+                        //index++;
                     }
                 });
             }
@@ -269,7 +269,7 @@ namespace Accord.Extensions.Imaging.Algorithms.LINE2D
                     }
                 }
 
-                bool finalAdd = (template.Features.Length % GlobalParameters.MAX_SUPPORTED_NUM_OF_FEATURES_ADDDED_AS_BYTE != 0) ? true : false;
+                bool finalAdd = (template.Features.Length % GlobalParameters.MAX_SUPPORTED_NUM_OF_FEATURES_ADDDED_AS_BYTE != 0);
                 if (finalAdd)
                 {
                     uBuffer.AddTo(uSimilarityMap);

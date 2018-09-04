@@ -1,4 +1,32 @@
-﻿#define READFILE
+﻿#region Licence and Terms
+// Siasun-Template-Matching class
+// https://github.com/EricWang12/Siasun-Template-Matching
+//
+// Copyright © Zhaoning(Eric) Wang, 2018 
+// wzneric@yeah.net
+//
+//   Affiliated from dajuric's Accord Extension :
+//   https://github.com/dajuric/accord-net-extension
+//   Slightly changed in multiple places from original to fit in the solution
+//
+//
+//   This program is free software: you can redistribute it and/or modify
+//   it under the terms of the GNU Lesser General Public License as published by
+//   the Free Software Foundation, either version 3 of the License, or
+//   (at your option) any later version.
+//
+//   This program is distributed in the hope that it will be useful,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//   GNU Lesser General Public License for more details.
+// 
+//   You should have received a copy of the GNU Lesser General Public License
+//   along with this program.  If not, see <https://www.gnu.org/licenses/lgpl.txt>.
+//
+#endregion
+
+
+#define READFILE
 //#define AUTOINIT        // auto init detects if there is a existing xml file and read it, (build it if not)
 //#define runXML
 
@@ -33,38 +61,6 @@ namespace FastTemplateMatching
 
         public TemplateMatching() { }
 
-      
-        ///// <summary>
-        ///// Initialize with a threshold setting and Angle Number setting
-        ///// </summary
-        //public void initialize(String fileName, int inputThreshold = 80 , float angleGap = 1 , int sizes = 1) 
-        //{
-
-        //    this.threshold = inputThreshold;
-        //    this.totalAngles = (int)(360 / angleGap);
-        //    this.totalSizes = sizes;
-//#if AUTOINIT
-//            try
-//            {
-//                Console.WriteLine("Reading from existing Template Data");
-//                templPyrs = fromXML(fileName);
-//            }
-//            catch (Exception)
-//            {
-//                Console.WriteLine("\nTemplate NOT found! ");
-//                templPyrs = fromFiles(fileName);
-//            }
-//            Console.WriteLine("COMPLETE!");
-//#else
-//#if READFILE
-//            templPyrs = fromFiles(fileName, true);
-//#else
-//            templPyrs = fromXML(fileName);
-//#endif
-
-//#endif
-            
-//        }
 
         
         /// <summary>
@@ -152,7 +148,7 @@ namespace FastTemplateMatching
         float CabRatio = 1;
 
         int totalAngles = 360;
-        int totalSizes = 6;
+        int totalSizes = 1;
 
         Gray<byte>[,] ResiizedtemplatePic, templatePic;
         private State Cap = State.Init;
@@ -369,7 +365,7 @@ namespace FastTemplateMatching
                 return;
 
             long preprocessTime, matchTime;
-            var bestRepresentatives = findObjects(frame, templPyrs, out preprocessTime, out matchTime,68);
+            var bestRepresentatives = findObjects(frame, templPyrs, out preprocessTime, out matchTime);
 
             /************************************ drawing ****************************************/
             foreach (var m in bestRepresentatives)
@@ -421,7 +417,7 @@ namespace FastTemplateMatching
         ///                                     increase to increase the precision in expense of detection time-delay</param>
         /// <param name="userFunc">Input User Function for customization and diversity</param>
         /// <returns>nothing.</returns>
-        private static void rotateLoad(List<TemplatePyramid> retList, Gray<byte>[,] image, int angles, int Width, int Height, bool buildXMLTemplateFile = false, int[] maxFeaturesPerLevel = null, Func<TemplatePyramid, Gray<byte>[,], TemplatePyramid> userFunc = null)
+        private static void rotateLoad(List<TemplatePyramid> retList, Gray<byte>[,] image, int angles, int Width, int Height, bool buildXMLTemplateFile = false, int[] maxFeaturesPerLevel = null, string name = "DefaultTemplate", Func<TemplatePyramid, Gray<byte>[,], TemplatePyramid> userFunc = null)
         {
 
             string resourceDir = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName, "Resources");
@@ -449,7 +445,7 @@ namespace FastTemplateMatching
                 try
                 {
                     TemplatePyramid newTemp = TemplatePyramid.CreatePyramidFromPreparedBWImage(
-                        preparedBWImage, " Template #" + TPindex++, ImageAngle, maxNumberOfFeaturesPerLevel: maxFeaturesPerLevel);
+                        preparedBWImage, name, ImageAngle, maxNumberOfFeaturesPerLevel: maxFeaturesPerLevel);
                     if (userFunc != null)newTemp = userFunc(newTemp, image);
                     retList.Add(newTemp);
                 }
@@ -488,7 +484,7 @@ namespace FastTemplateMatching
                 DotImaging.Primitives2D.Size Nsize = new DotImaging.Primitives2D.Size(width, height);
                 tempIMG = ResizeExtensions_Gray.Resize(image, Nsize, Accord.Extensions.Imaging.InterpolationMode.NearestNeighbor);
 
-                rotateLoad(retList, tempIMG, angles, Width, Height, false, maxFeaturesPerLevel, userFunc: userFunc);
+                rotateLoad(retList, tempIMG, angles, Width, Height, false, maxFeaturesPerLevel, image.ToString(), userFunc: userFunc);
             }
             if (buildXMLTemplateFile)
                 XMLTemplateSerializer<ImageTemplatePyramid<ImageTemplate>, ImageTemplate>.ToFile(retList, 
@@ -523,26 +519,19 @@ namespace FastTemplateMatching
                 throw new Exception("NO FILE FOUND");
             }
             object syncObj = new object();
-            //int fileNum = 0;
-            //Parallel.ForEach(files, delegate (string file)
-
+            
 
             foreach (var file in files)
             {
 
-                //string tempFile = "TP.bmp";
-                //for (int i = 0; i < angles; i++)
-                //{
-                //    float ImageAngle = (float)i * 360 / angles;
-
-                //    rotateImage(file, ImageAngle, tempFile);
+                
 
                 int shortSide, SqrSide,inputWidth, inputHeight;
                 float FileRatio = 1;
                 Gray<byte>[,] preparedBWImage;
                 for (int j = 0; j < sizes; j++)
                 {
-                    Console.WriteLine("Size # " + j);// + " angle " + ImageAngle);
+                    Console.WriteLine("Size # " + j);
                     try
                     {
                        preparedBWImage = ImageIO.LoadGray(file).Clone();
@@ -573,8 +562,7 @@ namespace FastTemplateMatching
                         inputWidth = CropToSqr ? SqrSide : preparedBWImage.Width();
                         inputHeight = CropToSqr ? SqrSide : preparedBWImage.Height();
 
-
-                        rotateLoad(list, preparedBWImage, angles, inputWidth, inputHeight, false, maxFeaturesPerLevel, userFunc);
+                        rotateLoad(list, preparedBWImage, angles, inputWidth, inputHeight, false, maxFeaturesPerLevel,file, userFunc);
                     }
                     catch (Exception)
                     { }
@@ -618,7 +606,7 @@ namespace FastTemplateMatching
             var grayIm = image.ToGray();
             var bestRepresentatives = new List<Match>();
 
-            userFunc = ( userFunc != null) ? userFunc : (inputList)=> inputList;
+            //userFunc = ( userFunc != null) ? userFunc : (inputList)=> inputList;
             LinearizedMapPyramid linPyr  = LinearizedMapPyramid.CreatePyramid(grayIm); //prepare linear-pyramid maps
             
             List<Match> matches = linPyr.MatchTemplates(templPyrs, Threshold);
@@ -630,8 +618,8 @@ namespace FastTemplateMatching
                     bestRepresentatives.Add(group.Representative);
             }
 
-
-            bestRepresentatives = userFunc(bestRepresentatives);
+            if(userFunc!=null)
+                bestRepresentatives = userFunc(bestRepresentatives);
             return bestRepresentatives;
         }
 
@@ -652,7 +640,7 @@ namespace FastTemplateMatching
             var grayIm = image.ToGray();
             var bestRepresentatives = new List<Match>();
 
-            userFunc = (userFunc != null) ? userFunc : (inputList) => inputList;
+            //userFunc = (userFunc != null) ? userFunc : (inputList) => inputList;
             Stopwatch stopwatch = new Stopwatch();
 
             stopwatch.Start();
@@ -669,8 +657,8 @@ namespace FastTemplateMatching
                 if (labels == null ? true : labels.Contains(group.Representative.Template.ClassLabel) )
                     bestRepresentatives.Add(group.Representative);
             }
-
-            bestRepresentatives = userFunc(bestRepresentatives);
+            if(userFunc != null)
+                bestRepresentatives = userFunc(bestRepresentatives);
             return bestRepresentatives;
         }
 
